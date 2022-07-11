@@ -9,7 +9,7 @@ public class DBManager {
 	
 	private static Connection conn = null;
 	
-	private DBManager() {}
+	private DBManager() {}	//pattern singleton
 	
 	public static Connection getConnection() throws SQLException {
 			
