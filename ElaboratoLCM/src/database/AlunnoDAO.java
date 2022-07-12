@@ -6,7 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 import java.text.ParseException;
+
 
 //gestione delle date (formato sql yyyy-mm-dd, formato string codice dd-mm-yyyy)
 
@@ -23,8 +25,9 @@ public class AlunnoDAO {
 		EntityAlunno eA = null;
 		
 		try {
+			
 			Connection conn = DBManager.getConnection();
-			String query = "SELECT * FROM ALUNNI WHERE MATRICOLA = ?;";
+			String query = "SELECT * FROM Alunni WHERE matricola = ?;";
 			
 			try {
 				
@@ -32,8 +35,11 @@ public class AlunnoDAO {
 				stmt.setString(1, matricola);  //throws SQLException
 				
 				ResultSet res = stmt.executeQuery();  //throws SQLException 
-				eA = new EntityAlunno(res.getString(1), res.getString(2), res.getString(9), res.getString(4), res.getString(8), res.getString(7), res.getString(5), res.getString(6), res.getInt(10), res.getDate(3).toLocalDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
-	
+				
+				if(res.next()) {
+					eA = new EntityAlunno(res.getString(1), res.getString(2), res.getString(9), res.getString(4), res.getString(8), res.getString(7), res.getString(5), res.getString(6), res.getInt(10), res.getDate(3));
+					
+				}
 			}
 			catch(SQLException e ) {
 				throw new DAOException("Errore alunno readAlunno");
@@ -54,33 +60,24 @@ public class AlunnoDAO {
 		try {
 			Connection conn = DBManager.getConnection();
 		
-			String query = "INSERT INTO ALUNNI VALUES (?,?,?,?,?,?,?,?,?);";
+			String query = "INSERT INTO Alunni VALUES (?,?,?,?,?,?,?,?,?);";
 		
 			try {
 			
 				PreparedStatement stmt = conn.prepareStatement(query);
+					
+				stmt.setDate(3, eA.getDataDiNascita()); 
+				stmt.setString(1, eA.getNome());
+				stmt.setString(2, eA.getCognome());
+				stmt.setString(4, eA.getComuneDiResidenza());
+				stmt.setString(5, eA.getUsername());
+				stmt.setString(6, eA.getPassword());
+				stmt.setString(7, eA.getNumeroDiCellulare());
+				stmt.setString(8, eA.getEmail());
+				stmt.setString(9, eA.getCodiceFiscale());
+					
+				stmt.executeUpdate();
 				
-				try {
-					
-					String dataDiNascita = eA.getDataDiNascita();
-					SimpleDateFormat sdfSrc = new java.text.SimpleDateFormat("dd-MM-yyyy");
-					SimpleDateFormat sdfDst = new java.text.SimpleDateFormat("yyyy-MM-dd");
-					dataDiNascita = sdfDst.format(sdfSrc.parse(dataDiNascita));
-					
-					stmt.setDate(3, (java.sql.Date)sdfDst.parse(dataDiNascita));
-					stmt.setString(1, eA.getNome());
-					stmt.setString(2, eA.getCognome());
-					stmt.setString(4, eA.getComuneDiResidenza());
-					stmt.setString(5, eA.getUsername());
-					stmt.setString(6, eA.getPassword());
-					stmt.setString(7, eA.getNumeroDiCellulare());
-					stmt.setString(8, eA.getEmail());
-					stmt.setString(9, eA.getCodiceFiscale());
-					
-				} catch (ParseException e) {
-					e.printStackTrace();
-					System.out.print("Creazione alunno fallita: causa formato data di nascita incorretto");
-				}
 			} 
 		
 			catch(SQLException e) {
@@ -95,5 +92,36 @@ public class AlunnoDAO {
 			throw new DBConnectionException("Errore connessione database");
 		}
 	}
+	
+	public static void deleteAlunno(String matricola) throws DAOException, DBConnectionException {
+		
+		try {
+			
+			Connection conn = DBManager.getConnection();
+			String query = "DELETE FROM Alunni WHERE matricola = ?;";
+			
+			try {
+				
+				PreparedStatement stmt = conn.prepareStatement(query);
+				stmt.setString(1, matricola);
+				stmt.executeUpdate();
+				
+			}
+			
+			catch(SQLException e) {
+				throw new DAOException("Errore alunno deleteAlunno");
+			}
+			
+			finally {
+				DBManager.closeConnection();
+			}
+		}
+		
+		catch(SQLException e) {
+			throw new DBConnectionException("Errore connessione database");
+		}
+	}
+	
+	public static boolean update() {return true;}
 
 }
