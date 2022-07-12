@@ -2,26 +2,14 @@ package entity;
 
 public class EntityParentela {
 
-	private String genitore_cf;
-	private int matricola;
+	private EntityGenitore eg;
+	private EntityAlunno ea;
 	
-	public EntityParentela( String cf, int matricola) {
-		
-		this.genitore_cf=cf;
-		this.matricola=matricola;
-		
-	}
-	public String get_Genitorecf() {
-		return this.genitore_cf;
-	}
-	public void set_Genitorecf( String cf) {
-		
-		this.genitore_cf=cf;
+	public void associaGenitore( EntityGenitore g) {
+		this.eg=g;
 	}
 	
-	public int getMatricola() {
-		
-		return this.matricola;
+	public void associaAlunno( EntityAlunno a) {
+		this.ea=a;
 	}
-//setMatricola dubbio	
 }

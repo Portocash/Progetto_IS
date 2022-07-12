@@ -49,7 +49,7 @@ package database;
 		}
 
 
-		public static EntityGenitore readGenitore(String codiceFiscale) throws DAOException, DBConnectionException {
+		public static EntityGenitore checkGenitoreDatabase(String codiceFiscale) throws DAOException, DBConnectionException {
 
 			EntityGenitore eG = null;
 
@@ -180,7 +180,5 @@ package database;
 			return eg;
 		}
 
+	
 	}
-
-}
-}
