@@ -1,5 +1,7 @@
 package entity;
 
+import java.sql.Date;
+
 //SERVE FORNIRE IL SET PER LA MATRICOLA?
 
 abstract class Utente {
@@ -12,15 +14,16 @@ abstract class Utente {
 	private String numeroDiCellulare;
 	private String username;
 	private String password;
-	private String dataDiNascita;
+	private Date dataDiNascita;
 	
-	public Utente(String nome, String cognome, String codFisc, String comuneDiResidenza, String email, String numeroCel, String username, String password, String dataDiNascita){
+	
+	public Utente(String nome, String cognome, String codFisc, String comuneDiResidenza, String email, String numeroCel, String username, String password, Date dataDiNascita){
 		this.nome = nome; this.cognome = cognome; this.codiceFiscale = codFisc; this.comuneDiResidenza = comuneDiResidenza; this.email = email; this.dataDiNascita = dataDiNascita;
 		this.numeroDiCellulare = numeroCel; this.username = username; this.password = password;
 	}
 	
 	//costruttore di default costruito qualora si voglia istanziare un oggetto non specificando i valori per tutti i membri
-	public Utente() {this.username = null; this.password = null;}
+	public Utente() {}
 
 	public String getNome() {
 		return nome;
@@ -70,11 +73,11 @@ abstract class Utente {
 		this.numeroDiCellulare = numeroDiCellulare;
 	}
 	
-	public String getDataDiNascita() {
+	public Date getDataDiNascita() {
 		return this.dataDiNascita;
 	}
 	
-	public void setDataDiNascita(String dataDiNascita) {
+	public void setDataDiNascita(Date dataDiNascita) {
 		this.dataDiNascita = dataDiNascita;
 	}
 	
@@ -100,7 +103,7 @@ public class EntityAlunno extends Utente {
 	private int matricola;
 
 	public EntityAlunno(String nome, String cognome, String codFisc, String comuneDiResidenza, String email,
-			String numeroCel, String username, String password, int matricola, String dataDiNascita) {
+			String numeroCel, String username, String password, int matricola, Date dataDiNascita) {
 		super(nome, cognome, codFisc, comuneDiResidenza, email, numeroCel, username, password, dataDiNascita);
 		this.matricola = matricola;
 	}
