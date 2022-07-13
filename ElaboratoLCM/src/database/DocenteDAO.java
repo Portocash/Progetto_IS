@@ -30,14 +30,14 @@ public class DocenteDAO {
 				stmt.setString(4,eD.getcomuneDiResidenza());
 				stmt.setString(5, eD.getUsername());
 				stmt.setString(6,eD.getPassword());
-				stmt.setString(7,eD.getnumeroDiCellulare());
+				stmt.setString(7,eD.getNumeroCellulare());
 				stmt.setString(8,eD.getEmail());
 				stmt.setString(9,eD.getCodiceFiscale());
-				stmt.setInt(10, eD.matricola_docente);
+				stmt.setInt(10, eD.get_matricolaDocente());
 				stmt.executeUpdate();
 
 			}catch(SQLException e) {
-				throw new DAOException("Errore create genitore");
+				throw new DAOException("Errore create docente");
 			}finally {
 				DBManager.closeConnection();
 			}
@@ -99,15 +99,15 @@ public class DocenteDAO {
 				stmt.setDate(3, eD.getDataDiNascita());
 				stmt.setString(4,eD.getcomuneDiResidenza());
 				stmt.setString(5, eD.getEmail());
-				stmt.setString(6,eD.getnumeroDiCellulare());
+				stmt.setString(6,eD.getNumeroCellulare());
 				stmt.setString(7,eD.getUsername());
 				stmt.setString(8,eD.getPassword());
-				stmt.setString(9,eD.getMatricolaDocente());
+				stmt.setString(9,eD.get_matricolaDocente());
 				
 				stmt.executeUpdate();
 
 			}catch(SQLException e) {
-				throw new DAOException("Errore update genitore");
+				throw new DAOException("Errore update docente");
 			}finally {
 				DBManager.closeConnection();
 			}
