@@ -12,9 +12,8 @@ package database;
  
 	public class GenitoreDAO {
 
-
 		public static void createGenitore(EntityGenitore eg) throws DAOException, DBConnectionException {
-				
+			
 			try {
 
 				Connection conn = DBManager.getConnection();
@@ -47,6 +46,7 @@ package database;
 				throw new DBConnectionException("Errore di connessione DB");
 			}
 		}
+
 
 
 		public static EntityGenitore checkGenitoreDatabase(String codiceFiscale) throws DAOException, DBConnectionException {

@@ -1,7 +1,7 @@
 package entity;
 import java.util.ArrayList;
 import java.util.Date;
-public class EntityGenitore extends Utente {
+public class EntityGenitore extends EntityUtente {
 
 	private ArrayList<EntityParentela> figlio;
 	
