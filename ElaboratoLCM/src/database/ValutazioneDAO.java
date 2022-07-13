@@ -2,21 +2,21 @@ package database;
 
 	
 
-	import java.sql.Connection;
-	import java.sql.PreparedStatement;
-	import java.sql.ResultSet;
-	import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import entity.EntityAlunno;
 import entity.EntityValutazione;
-	import exception.DAOException;
-	import exception.DBConnectionException;
+import exception.DAOException;
+import exception.DBConnectionException;
 
-	public class ValutazioneDAO {
+public class ValutazioneDAO {
 
-		public static void createValutazione(EntityValutazione eV) throws DAOException, DBConnectionException {
+	public static void createValutazione(EntityValutazione eV) throws DAOException, DBConnectionException {
 			
-			try {
+		try {
 				
 				Connection conn = DBManager.getConnection();
 				String query = "INSERT INTO Valutazioni VALUES (?,?,?,?,?,?);";
@@ -34,7 +34,7 @@ import entity.EntityValutazione;
 					stmt.executeUpdate();
 
 				}catch(SQLException e) {
-					throw new DAOException("Errore scrittura biglietto");
+					throw new DAOException("Errore scrittura valutazione");
 				} finally {
 					DBManager.closeConnection();
 				}

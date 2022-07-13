@@ -17,19 +17,13 @@ import exception.DBConnectionException;
 			this.classe=c;
 		}
 		
-		
-		public EntityDocente associaDocente() {
-			
+		public EntityDocente getDocente() {
 			return docente;
-			
 		}
 		
-		public EntityClasse associaClasse() {
-			
+		public EntityClasse getClasse() {
 			return classe;
-			
 		}
-		
 		
 		public String getMateria() {
 			return materia;

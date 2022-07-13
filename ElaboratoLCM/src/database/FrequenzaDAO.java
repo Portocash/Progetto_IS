@@ -47,7 +47,7 @@ public class FrequenzaDAO {
 		}
 	}
 	
-	public static EntityFrequenza readFrequenza(int matricola_alunno, char classe_sezione, int classe_anno, String annoScolastico)throws DAOException, DBConnectionException {
+	public static EntityFrequenza readFrequenza(int matricola_alunno, char classe_sezione, int classe_anno)throws DAOException, DBConnectionException {
 		
 		EntityFrequenza eF = null;
 		EntityAlunno ea = new EntityAlunno("","", null, "", "", "", "", "", "", matricola_alunno);
@@ -56,16 +56,14 @@ public class FrequenzaDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "SELECT * FROM Frquenze WHERE ANNOSCOLASTICO=?, MATRICOLA_ALUNNO=?, SEZIONE_CLASSE=?, ANNO_CLASSE=? ;";
+			String query = "SELECT * FROM Frquenze WHERE MATRICOLA_ALUNNO=?, SEZIONE_CLASSE=?, ANNO_CLASSE=? ;";
 			
 			try {
 				
 				PreparedStatement stmt = conn.prepareStatement(query);
-				
-				stmt.setString(1,annoScolastico);
-				stmt.setInt(2,matricola_alunno);
-				stmt.setInt(3,classe_sezione);
-				stmt.setInt(4,classe_anno);
+				stmt.setInt(1,matricola_alunno);
+				stmt.setInt(2,classe_sezione);
+				stmt.setInt(3,classe_anno);
 
 				ResultSet result = stmt.executeQuery();
 
@@ -100,9 +98,9 @@ public class FrequenzaDAO {
 				PreparedStatement stmt = conn.prepareStatement(query);
 				
 				stmt.setString(1,eF.getAnnoScolastico());
-				stmt.setInt(2,eF.associaAlunno().getMatricola());
-				stmt.setChar(3, eF.associaClasse().getSezione());
-				stmt.setInt(4,eF.associaClasse.getClasseAnno());
+				stmt.setInt(2,eF.getAlunno().getMatricola());
+				stmt.setChar(3, eF.getClasse().getSezione());
+				stmt.setInt(4,eF.getClasse().getClasseAnno());
 			
 				
 				stmt.executeUpdate();
@@ -129,9 +127,9 @@ public class FrequenzaDAO {
 
 			try {
 				PreparedStatement stmt = conn.prepareStatement(query);
-				stmt.setInt(1,eF.associaAlunno().getMatricola());
-				stmt.setChar(2, eF.associaClasse().getSezione());
-				stmt.setInt(3,eF.associaClasse.getClasseAnno());
+				stmt.setInt(1,eF.getAlunno().getMatricola());
+				stmt.setChar(2, eF.getClasse().getSezione());
+				stmt.setInt(3,eF.getClasse().getClasseAnno());
 				stmt.executeUpdate();
 
 			}catch(SQLException e) {

@@ -25,11 +25,8 @@ import exception.DBConnectionException;
 		}
 		
 		public EntityAlunno getAlunno() {
-			
 			return studente;
 		}
-		public void associaStudente(EntityAlunno ea){ this.studente=ea;}
-		public void rimuoviStudente() { this.studente=null; }
 		
 		public int getId() {
 			return id_voto;
@@ -37,17 +34,17 @@ import exception.DBConnectionException;
 		public void setId(int id){
 			this.id_voto=id;
 		}
-		public date getData() {
+		public Date getData() {
 			return data;
 		}
-		public void setData(date data){
+		public void setData(Date data){
 			this.data=data;
 		}
 		public String getMateria() {
 			return materia;
 		}
 		public void setMateria(String materia){
-			this.materia=materia
+			this.materia=materia;
 		}
 	
 		public int getIdRegistroElettronico() {

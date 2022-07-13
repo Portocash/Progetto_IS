@@ -13,11 +13,11 @@ public class EntityFrequenza {
 		this.classe=c;
 	}
 	
-	public EntityAlunno associaAlunno() {	
+	public EntityAlunno getAlunno() {	
 		return alunno;
 	}
 	
-	public EntityClasse associaClasse() {
+	public EntityClasse getClasse() {
 			return classe;
 	}
 

@@ -29,9 +29,9 @@ import exception.DBConnectionException;
 					PreparedStatement stmt = conn.prepareStatement(query);
 					
 					stmt.setString(1,eI.getMateria());
-					stmt.setInt(2,eI.associaDocente().get_matricolaDocente());
-					stmt.setChar(3, eI.associaClasse().getSezione());
-					stmt.setInt(4,eI.associaClasse().getClasseAnno());
+					stmt.setInt(2,eI.getDocente().get_matricolaDocente());
+					stmt.setChar(3, eI.getClasse().getSezione());
+					stmt.setInt(4,eI.getClasse().getClasseAnno());
 					stmt.setString(5, eI.getAnnoScolastico());
 				
 					stmt.executeUpdate();
@@ -130,9 +130,9 @@ import exception.DBConnectionException;
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);
 					stmt.setString(1,eI.getMateria());
-					stmt.setInt(2,eI.associaDocente().get_matricolaDocente());
-					stmt.setChar(3, eI.associaClasse().getSezione());
-					stmt.setInt(4,eI.associaClasse.getClasseAnno());
+					stmt.setInt(2,eI.getDocente().get_matricolaDocente());
+					stmt.setChar(3, eI.getClasse().getSezione());
+					stmt.setInt(4,eI.getClasse.getClasseAnno());
 					stmt.setString(5,eI.getAnnoScolastico());
 					stmt.executeUpdate();
 
