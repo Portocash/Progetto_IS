@@ -37,7 +37,7 @@ public class FrequenzaDAO {
 				stmt.executeUpdate();
 
 			}catch(SQLException e) {
-				throw new DAOException("Errore create insegnamento");
+				throw new DAOException("Errore create frequenza");
 			}finally {
 				DBManager.closeConnection();
 			}
@@ -74,7 +74,7 @@ public class FrequenzaDAO {
 				}
 
 			}catch(SQLException e) {
-				throw new DAOException("Errore lettura insegnamento");
+				throw new DAOException("Errore lettura frequenza");
 			}finally {
 				DBManager.closeConnection();
 			}
@@ -108,7 +108,7 @@ public class FrequenzaDAO {
 				stmt.executeUpdate();
 
 			}catch(SQLException e) {
-				throw new DAOException("Errore update insegnamento");
+				throw new DAOException("Errore update frequenza");
 			}finally {
 				DBManager.closeConnection();
 			}
@@ -135,7 +135,7 @@ public class FrequenzaDAO {
 				stmt.executeUpdate();
 
 			}catch(SQLException e) {
-				throw new DAOException("Errore cancellazione insegnamento");
+				throw new DAOException("Errore cancellazione frequenza");
 			} finally {
 				DBManager.closeConnection();
 			}
