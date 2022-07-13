@@ -89,7 +89,7 @@ public class ValutazioneDAO {
 
 				Connection conn = DBManager.getConnection();
 				String query = "UPDATE Valutazioni SET DATA=?, MATERIA=?, MATRICOLAALUNNO=?, ID_REGISTROELETTRONICO=?, VOTO=? WHERE ID_VOTO=? ;";
-
+				
 				try {
 					
 

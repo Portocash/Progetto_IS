@@ -24,7 +24,7 @@ public class AlunnoDAO {
 		
 		try {
 			Connection conn = DBManager.getConnection();
-			String query = "SELECT * FROM ALUNNI WHERE MATRICOLA = ?;";
+			String query = "SELECT * FROM Alunni WHERE MATRICOLA = ?;";
 			
 			try {
 				
@@ -53,8 +53,7 @@ public class AlunnoDAO {
 		
 		try {
 			Connection conn = DBManager.getConnection();
-		
-			String query = "INSERT INTO ALUNNI VALUES (?,?,?,?,?,?,?,?,?);";
+			String query = "INSERT INTO Alunni VALUES (?,?,?,?,?,?,?,?,?);";
 		
 			try {
 			

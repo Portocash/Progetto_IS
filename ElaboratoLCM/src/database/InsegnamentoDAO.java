@@ -169,8 +169,10 @@ import exception.DBConnectionException;
 					stmt.setString(4,annoScolasticoCorrente);
 
 					ResultSet result = stmt.executeQuery();
-
-				while(result.next()) {
+						
+					result.next();
+					
+					while(result.next()) {
 					
 					temp= new EntityInsegnamento(result.getString(1),result.getString(5),ed,eC);
 					eI.add(temp);

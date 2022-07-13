@@ -1,7 +1,7 @@
 //DA CANCELLARE
 
 package entity;
-import java.util.Date;
+import java.sql.Date;
 
 abstract class EntityUtente  {
 
@@ -17,7 +17,8 @@ abstract class EntityUtente  {
 	
 
 
-	public EntityUtente(String nome, String cognome, date dataDiNascita, String codiceFiscale, String comuneDiResidenza,String email, String numeroDiCellulare, String username, String password) {
+	public EntityUtente(String nome, String cognome, Date dataDiNascita, String codiceFiscale, String comuneDiResidenza,
+			String email, String numeroDiCellulare, String username, String password) {
 		super();
 		this.nome= nome;
 		this.cognome=cognome;
@@ -44,10 +45,10 @@ abstract class EntityUtente  {
 	public void setCognome(String cognome){
 		this.cognome= cognome;
 	}
-	public date getDataDiNascita() {
+	public Date getDataDiNascita() {
 		return dataDiNascita;
 	}
-	public void setDataDiNascita(date dataDiNascita){
+	public void setDataDiNascita(Date dataDiNascita){
 		this.dataDiNascita= dataDiNascita;
 	}
 	public String getcomuneDiResidenza() {
@@ -71,7 +72,7 @@ abstract class EntityUtente  {
 	public String getNumeroCellulare() {
 		return numeroDiCellulare;
 	}
-	public void setnumeroDiCellulare()(String numeroDiCellulare){
+	public void setnumeroDiCellulare(String numeroDiCellulare){
 		this.numeroDiCellulare=numeroDiCellulare;
 	}
 	public String getEmail() {

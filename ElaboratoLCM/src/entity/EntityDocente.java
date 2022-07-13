@@ -1,6 +1,6 @@
 package entity;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class EntityDocente extends EntityUtente {

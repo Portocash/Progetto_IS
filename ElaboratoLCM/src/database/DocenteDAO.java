@@ -9,6 +9,7 @@ import entity.EntityGenitore;
 import exception.DAOException;
 import exception.DBConnectionException;
 import entity.EntityDocente;
+import java.sql.Date;
 
 public class DocenteDAO {
 
@@ -18,7 +19,7 @@ public class DocenteDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "INSERTO INTO Docenti VALUES (?,?,?,?,?,?,?,?,?,?);";
+			String query = "INSERT INTO Docenti VALUES (?,?,?,?,?,?,?,?,?);";
 			
 			try {
 		
@@ -33,7 +34,7 @@ public class DocenteDAO {
 				stmt.setString(7,eD.getNumeroCellulare());
 				stmt.setString(8,eD.getEmail());
 				stmt.setString(9,eD.getCodiceFiscale());
-				stmt.setInt(10, eD.get_matricolaDocente());
+	//			stmt.setInt(10, eD.get_matricolaDocente());
 				stmt.executeUpdate();
 
 			}catch(SQLException e) {
