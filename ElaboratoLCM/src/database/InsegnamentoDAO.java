@@ -149,9 +149,13 @@ import exception.DBConnectionException;
 
 
 
-		public static ArrayList<EntityInsegnamento> getInsegnamento (int matricola_docente, String annoScolasticoCorrente, char sezione_classe, int anno_classe)throws DAOException, DBConnectionException {
+		public static void getInsegnamento (int matricola_docente, String annoScolasticoCorrente, char sezione_classe, int anno_classe, ArrayList<EntityInsegnamento> eI )throws DAOException, DBConnectionException {
 			
-			ArrayList<EntityInsegnamento> eI = null; //vedi
+	
+			EntityInsegnamento temp=null;
+			EntityDocente ed = new EntityDocente("","", null, "", "", "", "", "", "", matricola_docente);
+			EntityClasse eC= new EntityClasse(classe_sezione, classe_anno);
+
 			try {
 				Connection conn = DBManager.getConnection();
 				String query = "SELECT * FROM Insegnamenti  WHERE MATRICOLA_DOCENTE=? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=?;";
@@ -166,9 +170,11 @@ import exception.DBConnectionException;
 
 					ResultSet result = stmt.executeQuery();
 
-				//vedi come fare la lista 
-				if(result.next()) {
-						eI= new List<EntityInsegnamento>(result.getString(1), result.getInt(2), result.getChar(3), result.getInt(4), result.getString(5));
+				while(result.next()) {
+					
+					temp= new EntityInsegnamento(result.getString(1),result.getString(5),ed,eC);
+					eI.add(temp);
+						
 					}
 				}catch(SQLException e) {
 					throw new DAOException("Errore insegnamento getInsegnamento");
@@ -180,7 +186,6 @@ import exception.DBConnectionException;
 				throw new DBConnectionException("Errore connessione database");
 			}
 
-			return eI;
 		}
 
 	}	
