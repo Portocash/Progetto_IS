@@ -17,7 +17,7 @@ public class BoundaryDocente {
 		boolean matricolaCheck = false;
 		boolean materiaCheck = false;
 		boolean dataCheck = false;
-		
+		LocalDate data_Voto;
 		String matr=String.valueOf(matricola);
 		if(matr.length()==20) matricolaCheck = true;
 		else matricolaCheck = false;
@@ -39,7 +39,7 @@ public class BoundaryDocente {
 			dataCheck = false;
 		}
 		try{
-			LocalDate data_Voto = LocalDate.parse(dataVoto);
+			 data_Voto = LocalDate.parse(dataVoto);
 		}
 		catch(ParseException e) {
 			return;
