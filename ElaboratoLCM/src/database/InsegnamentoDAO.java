@@ -169,15 +169,14 @@ import exception.DBConnectionException;
 					stmt.setString(4,annoScolasticoCorrente);
 
 					ResultSet result = stmt.executeQuery();
-						
-					result.next();
 					
-					while(result.next()) {
+					do {
 					
 					temp= new EntityInsegnamento(result.getString(1),result.getString(5),ed,eC);
 					eI.add(temp);
 						
 					}
+					while(result.next());
 				}catch(SQLException e) {
 					throw new DAOException("Errore insegnamento getInsegnamento");
 				} finally {

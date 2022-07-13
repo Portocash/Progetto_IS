@@ -148,7 +148,7 @@ public class FrequenzaDAO {
 	
 	public static char getSezioneClasse(int matricola, String annoScolasticoCorrente) throws DAOException, DBConnectionException {
 		
-		char sezione_classe='';
+		char sezione_classe;
 
 		try {
 			Connection conn = DBManager.getConnection();

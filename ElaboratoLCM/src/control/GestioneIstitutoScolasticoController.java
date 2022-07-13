@@ -4,7 +4,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.text.DateFormat;
 import java.lang.Integer;
-
+import java.time.LocalDate;
 import database.AlunnoDAO;
 import database.ClasseDAO;
 import database.DocenteDAO;
@@ -78,6 +78,7 @@ public class GestioneIstitutoScolasticoController {
 					genitore=null;
 					alunno=null;
 					DocenteDAO.createDocente(docente);		
+					//crea matricola_docente con le set, e una query.
 		    break;
 		  case "alunno":
 				query_result1 = AlunnoDAO.checkAlunnoDatabase(codiceFiscale);
@@ -127,10 +128,11 @@ public class GestioneIstitutoScolasticoController {
 		}		
 	}
 	
-	static void inserimentoVoto(int matricola, int voto, Date data_Voto, String materia, int matricola_docente) {
+	static void inserimentoVoto(int matricola, int voto, LocalDate data_Voto, String materia, int matricola_docente)throws OperationException {
 		
 		String annoScolasticoCorrente;
 		String temp;
+		String annoSistema;
 		boolean valido=false;
 		int i=0;
 		String mat;
@@ -139,7 +141,7 @@ public class GestioneIstitutoScolasticoController {
 		
 		/* getAnnoScolasticoCorrente*/
 		temp=data_Voto.toString();
-		annoScolasticoCorrente=temp.substring(6,10);
+		annoScolasticoCorrente=temp.substring(0,3);
 		
 		try{
 			char sezione_classe= FrequenzaDAO.getSezioneClasse(matricola, annoScolasticoCorrente);
@@ -161,14 +163,18 @@ public class GestioneIstitutoScolasticoController {
 				throw new OperationException("Docente non associato alla classe dell'alunno per quella materia");
 			}
 			
+			LocalDate todaysDate = LocalDate.now();
+			annoSistema=todaysDate.toString();
+			String locale=annoSistema.substring(0,3);
+			boolean check=annoScolasticoCorrente.equals(todaysDate);
+			
+			if(check!=true) throw new OperationException("Errore anno scolastico non valido");
 			
 		}
 		catch(DBConnectionException dbEx) {
 			throw new OperationException("\nRiscontrato problema connessione!\n");
 		}catch(DAOException ex) {
-		throw new OperationException("Riscontrato problema database!\n");
+		throw new OperationException("\nRiscontrato problema database!\n");
 		}		
-		}
-		
 	}
 }
