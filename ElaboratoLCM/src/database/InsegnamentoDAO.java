@@ -149,12 +149,12 @@ import exception.DBConnectionException;
 
 
 
-		public static void getInsegnamento (int matricola_docente, String annoScolasticoCorrente, char sezione_classe, int anno_classe, ArrayList<EntityInsegnamento> eI )throws DAOException, DBConnectionException {
+		public static void getInsegnamento (int matricola_docente, String annoScolasticoCorrente, char sezione_classe, int anno_classe, ArrayList<EntityInsegnamento> ListaeI )throws DAOException, DBConnectionException {
 			
 	
 			EntityInsegnamento temp=null;
 			EntityDocente ed = new EntityDocente("","", null, "", "", "", "", "", "", matricola_docente);
-			EntityClasse eC= new EntityClasse(classe_sezione, classe_anno);
+			EntityClasse eC= new EntityClasse(sezione_classe, anno_classe);
 
 			try {
 				Connection conn = DBManager.getConnection();
@@ -173,7 +173,7 @@ import exception.DBConnectionException;
 					do {
 					
 					temp= new EntityInsegnamento(result.getString(1),result.getString(5),ed,eC);
-					eI.add(temp);
+					ListaeI.add(temp);
 						
 					}
 					while(result.next());

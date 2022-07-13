@@ -44,7 +44,7 @@ public class GestioneIstitutoScolasticoController {
 		return gI; 
 	}
 	
-	static void registrUtente(String Nome, String Cognome, Date dataDiNascita, 
+	public void registraUtente(String Nome, String Cognome, Date dataDiNascita, 
 			String codiceFiscale, String comuneDiResidenza, String Email, String Cellulare,
 			String Ruolo, EntityDocente docente,EntityAlunno alunno, EntityGenitore genitore) throws OperationException {
 		
@@ -128,18 +128,16 @@ public class GestioneIstitutoScolasticoController {
 		}		
 	}
 	
-	static void inserimentoVoto(int matricola, int voto, LocalDate data_Voto, String materia, int matricola_docente)throws OperationException {
+	public void inserimentoVoto(int matricola, int voto, LocalDate data_Voto, String materia, int matricola_docente)throws OperationException {
 		
 		String annoScolasticoCorrente;
-		String temp;
-		String annoSistema;
 		boolean valido=false;
 		int i=0;
 		String mat;
 		
 		ArrayList<EntityInsegnamento> ListaInsegnamento=new ArrayList<EntityInsegnamento>();
 		
-		/* getAnnoScolasticoCorrente*/
+		/*getAnnoScolasticoCorrente*/
 		
 		annoScolasticoCorrente=String.valueOf(data_Voto.getYear());
 		
@@ -152,7 +150,6 @@ public class GestioneIstitutoScolasticoController {
 				
 				mat = ListaInsegnamento.get(i).getMateria();
 				if(mat.equals(materia)==true) {
-					
 					valido=true;
 				}
 				else i++;
@@ -168,8 +165,7 @@ public class GestioneIstitutoScolasticoController {
 			
 			boolean check=annoScolasticoCorrente.equals(locale);
 			
-			if(check!=true) throw new OperationException("Errore anno scolastico non valido");
-			
+			if(check!=true) throw new OperationException("Errore anno scolastico non valido");			
 		}
 		catch(DBConnectionException dbEx) {
 			throw new OperationException("\nRiscontrato problema connessione!\n");
