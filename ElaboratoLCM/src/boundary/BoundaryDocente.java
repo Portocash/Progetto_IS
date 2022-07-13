@@ -1,5 +1,8 @@
 package boundary;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 import control.GestioneIstitutoScolasticoController;
@@ -9,11 +12,11 @@ import exception.OperationException;
 public class BoundaryDocente {
 
 	public void inserimentoVoto(int matricola, int voto, 
-			LocalDate data_Voto, String materia, int matricola_docente)throws OperationException { 
+			String dataVoto, String materia, int matricola_docente)throws OperationException { 
 		
 		boolean matricolaCheck = false;
-		boolean data_VotoCheck = false;
 		boolean materiaCheck = false;
+		boolean dataCheck = false;
 		
 		String matr=String.valueOf(matricola);
 		if(matr.length()==20) matricolaCheck = true;
@@ -25,7 +28,22 @@ public class BoundaryDocente {
 		
 		if(materia.length()<=100) materiaCheck = true;
 		else materiaCheck = false;
-		
+
+		DateFormat df= new SimpleDateFormat("yyyy/mm/dd");
+		df.setLenient(false);
+		try {
+		 df.parse(dataVoto);
+		 dataCheck=true;
+		}
+		catch(ParseException e) {
+			dataCheck = false;
+		}
+		try{
+			LocalDate data_Voto = LocalDate.parse(dataVoto);
+		}
+		catch(ParseException e) {
+			return;
+		}
 		if(!materiaCheck) throw new OperationException("\n Materia è una stringa di lunghezza>100");
 		
 		GestioneIstitutoScolasticoController GIS = GestioneIstitutoScolasticoController.getInstance();
@@ -35,7 +53,8 @@ public class BoundaryDocente {
 		}
 		catch(OperationException ex) {	
 			throw new OperationException("parametri non valido");
+		}
 	}	
 	}
-	}
+}
 
