@@ -23,7 +23,7 @@ import exception.DBConnectionException;
 				Connection conn = DBManager.getConnection();
 
 				try {
-					String query = "INSERTO INTO INSEGNAMENTI VALUES (?,?,?,?,?);";
+					String query = "INSERTO INTO Insegnamenti VALUES (?,?,?,?,?);";
 
 
 					PreparedStatement stmt = conn.prepareStatement(query);
@@ -89,7 +89,7 @@ import exception.DBConnectionException;
 		}
 
 
-		public static void updateInsegnamento(EntityInsegnamento eI) throws DAOException, DBConnectionException {
+	/*	public static void updateInsegnamento(EntityInsegnamento eI) throws DAOException, DBConnectionException {
 			
 
 			try {
@@ -97,7 +97,7 @@ import exception.DBConnectionException;
 				Connection conn = DBManager.getConnection();
 
 				try {
-					String query = "UPDATE INSEGNAMENTI SET MATERIA=? WHERE  MATRICOLA_DOCENTE=? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ;";
+					String query = "UPDATE Insegnamenti MATERIA=? WHERE  MATRICOLA_DOCENTE=? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ;";
 
 
 					PreparedStatement stmt = conn.prepareStatement(query);
@@ -113,14 +113,14 @@ import exception.DBConnectionException;
 				}catch(SQLException e) {
 					throw new DAOException("Errore update insegnamento");
 				}finally {
-					DBManager.closeConnection();
+					DBManager.closeConnection(); sono tutti chiave primary
 				}
-				
+		
 			}catch(SQLException e) {
 				throw new DBConnectionException("Errore di connessione DB");
 			}
 
-		}
+		}*/
 
 		public static void deleteInsegnamento(EntityInsegnamento eI) throws DAOException, DBConnectionException {
 			
@@ -129,7 +129,7 @@ import exception.DBConnectionException;
 
 				Connection conn = DBManager.getConnection();
 
-				String query = "DELETE FROM INSEGNAMENTI WHERE MATERIA=?, MATRICOLA_DOCENTE = ? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ; ";
+				String query = "DELETE FROM Insegnamenti WHERE MATERIA=?, MATRICOLA_DOCENTE = ? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ; ";
 
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);
@@ -159,7 +159,7 @@ import exception.DBConnectionException;
 			try {
 				Connection conn = DBManager.getConnection();
 
-				String query = "SELECT * FROM INSEGNAMENTI  WHERE MATRICOLA_DOCENTE=? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=?;";
+				String query = "SELECT * FROM Insegnamenti  WHERE MATRICOLA_DOCENTE=? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=?;";
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);
 

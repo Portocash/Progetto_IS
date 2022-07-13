@@ -2,27 +2,25 @@ package entity;
 
 public class EntityFrequenza {
 
-	private EntityAlunno alunno;
-	private EntityClasse classe;
+	private final EntityAlunno alunno;
+	private final EntityClasse classe;
 	private String annoScolastico;
 	
-	public EntityFrequenza(String anno) {
+	public EntityFrequenza(String anno, EntityAlunno a, EntityClasse c) {
 		
 		this.annoScolastico=anno;
+		this.alunno=a;
+		this.classe=c;
 	}
 	
-	public void associaAlunno(EntityAlunno ea) {
-		
-		this.alunno=ea;
-		
+	public EntityAlunno associaAlunno() {	
+		return alunno;
 	}
 	
-	public void associaClasse(EntityClasse ec) {
-		
-		this.classe=ec;
-		
+	public EntityClasse associaClasse() {
+			return classe;
 	}
-	
+
 	public String getAnnoScolastico() {
 		
 		return annoScolastico;
