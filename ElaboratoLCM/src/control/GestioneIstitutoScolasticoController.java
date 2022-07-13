@@ -140,8 +140,8 @@ public class GestioneIstitutoScolasticoController {
 		ArrayList<EntityInsegnamento> ListaInsegnamento=new ArrayList<EntityInsegnamento>();
 		
 		/* getAnnoScolasticoCorrente*/
-		temp=data_Voto.toString();
-		annoScolasticoCorrente=temp.substring(0,3);
+		
+		annoScolasticoCorrente=String.valueOf(data_Voto.getYear());
 		
 		try{
 			char sezione_classe= FrequenzaDAO.getSezioneClasse(matricola, annoScolasticoCorrente);
@@ -164,9 +164,9 @@ public class GestioneIstitutoScolasticoController {
 			}
 			
 			LocalDate todaysDate = LocalDate.now();
-			annoSistema=todaysDate.toString();
-			String locale=annoSistema.substring(0,3);
-			boolean check=annoScolasticoCorrente.equals(todaysDate);
+			String locale=String.valueOf(todaysDate.getYear());
+			
+			boolean check=annoScolasticoCorrente.equals(locale);
 			
 			if(check!=true) throw new OperationException("Errore anno scolastico non valido");
 			
