@@ -18,11 +18,10 @@ public class DocenteDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-
+			String query = "INSERTO INTO Docenti VALUES (?,?,?,?,?,?,?,?,?,?);";
+			
 			try {
-				String query = "INSERTO INTO DOCENTE VALUES (?,?,?,?,?,?,?,?,?,?);";
-
-
+		
 				PreparedStatement stmt = conn.prepareStatement(query);
 				
 				stmt.setString(1,eD.getNome());
@@ -56,14 +55,12 @@ public class DocenteDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
+			String query = "SELECT * FROM Docenti WHERE CODICEFISCALE = ? ;";
+
 
 			try {
-				String query = "SELECT * FROM DOCENTI WHERE CODICEFISCALE = ? ;";
-
-
+				
 				PreparedStatement stmt = conn.prepareStatement(query);
-				
-				
 				stmt.setString(1,codiceFiscale);
 
 				ResultSet result = stmt.executeQuery();
@@ -91,11 +88,10 @@ public class DocenteDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-
+			String query = "UPDATE Docenti SET NOME=?, COGNOME=?, DATADINASCITA=?, COMUNEDIRESIDENZA=?, EMAIL=?, NUMERODICELLULARE=?, USERNAME = ?, PASSWORD = ? WHERE MATRICOLA_DOCENTEE=? ;";
+		
 			try {
-				String query = "UPDATE DOCENTI SET NOME=?, COGNOME=?, DATADINASCITA=?, COMUNEDIRESIDENZA=?, EMAIL=?, NUMERODICELLULARE=?, USERNAME = ?, PASSWORD = ? WHERE MATRICOLA_DOCENTEE=? ;";
-
-
+				
 				PreparedStatement stmt = conn.prepareStatement(query);
 				
 				stmt.setString(1,eD.getNome());
@@ -128,8 +124,7 @@ public class DocenteDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-
-			String query = "DELETE FROM DOCENTI WHERE MATRICOLA_DOCENTE = ?; ";
+			String query = "DELETE FROM Docenti WHERE MATRICOLA_DOCENTE = ?; ";
 
 			try {
 				PreparedStatement stmt = conn.prepareStatement(query);

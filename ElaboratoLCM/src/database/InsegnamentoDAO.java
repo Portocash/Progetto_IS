@@ -21,10 +21,10 @@ import exception.DBConnectionException;
 			try {
 
 				Connection conn = DBManager.getConnection();
-
+				String query = "INSERTO INTO Insegnamenti VALUES (?,?,?,?,?);";
+				
 				try {
-					String query = "INSERTO INTO Insegnamenti VALUES (?,?,?,?,?);";
-
+				
 
 					PreparedStatement stmt = conn.prepareStatement(query);
 					
@@ -56,14 +56,11 @@ import exception.DBConnectionException;
 			try {
 
 				Connection conn = DBManager.getConnection();
-
+				String query = "SELECT * FROM Insegnamenti WHERE MATRICOLA_DOCENTE = ? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ;";
 				try {
-					String query = "SELECT * FROM Insegnamenti WHERE MATRICOLA_DOCENTE = ? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ;";
-
-
+					
 					PreparedStatement stmt = conn.prepareStatement(query);
-					
-					
+							
 					stmt.setInt(1,matricola_docente);
 					stmt.setInt(2,classe_sezione);
 					stmt.setInt(3,classe_anno);
@@ -128,7 +125,6 @@ import exception.DBConnectionException;
 			try {
 
 				Connection conn = DBManager.getConnection();
-
 				String query = "DELETE FROM Insegnamenti WHERE MATERIA=?, MATRICOLA_DOCENTE = ? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ; ";
 
 				try {
@@ -158,8 +154,8 @@ import exception.DBConnectionException;
 			ArrayList<EntityInsegnamento> eI = null; //vedi
 			try {
 				Connection conn = DBManager.getConnection();
-
 				String query = "SELECT * FROM Insegnamenti  WHERE MATRICOLA_DOCENTE=? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=?;";
+				
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);
 
