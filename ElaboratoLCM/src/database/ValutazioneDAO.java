@@ -1,9 +1,6 @@
 package database;
 
-public class ValutazioneDAO {
-
 	
-	package database;
 
 	import java.sql.Connection;
 	import java.sql.PreparedStatement;
@@ -22,8 +19,7 @@ import entity.EntityValutazione;
 			try {
 				
 				Connection conn = DBManager.getConnection();
-
-				String query = "INSERT INTO VALUTAZIONI VALUES (?,?,?,?,?,?);";
+				String query = "INSERT INTO Valutazioni VALUES (?,?,?,?,?,?);";
 
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);
@@ -58,10 +54,9 @@ import entity.EntityValutazione;
 			try {
 
 				Connection conn = DBManager.getConnection();
-
+				String query = "SELECT * FROM Valutazioni WHERE ID_VOTO = ? ;";
 				try {
-					String query = "SELECT * FROM VALUTAZIONE WHERE ID_VOTO = ? ;";
-
+					
 
 					PreparedStatement stmt = conn.prepareStatement(query);
 					
@@ -93,10 +88,10 @@ import entity.EntityValutazione;
 			try {
 
 				Connection conn = DBManager.getConnection();
+				String query = "UPDATE Valutazioni SET DATA=?, MATERIA=?, MATRICOLAALUNNO=?, ID_REGISTROELETTRONICO=?, VOTO=? WHERE ID_VOTO=? ;";
 
 				try {
-					String query = "UPDATE GENITORI SET DATA=?, MATERIA=?, MATRICOLAALUNNO=?, ID_REGISTROELETTRONICO=?, VOTO=? WHERE ID_VOTO=? ;";
-
+					
 
 					PreparedStatement stmt = conn.prepareStatement(query);
 					
@@ -106,7 +101,6 @@ import entity.EntityValutazione;
 					stmt.setInt(4, eV.getIdRegistroElettronico());
 					stmt.setInt(5,eV.getVoto());
 					stmt.setInt(6,eV.getId());
-
 					stmt.executeUpdate();
 
 				}catch(SQLException e) {
@@ -122,14 +116,13 @@ import entity.EntityValutazione;
 		}
 
 
-		public static void deleteGenitore(int id_voto) throws DAOException, DBConnectionException {
+		public static void deleteValutazione(int id_voto) throws DAOException, DBConnectionException {
 			
 			
 			try {
 
 				Connection conn = DBManager.getConnection();
-
-				String query = "DELETE FROM VALUTAZIONI WHERE ID_VOTO = ?; ";
+				String query = "DELETE FROM Valutazioni WHERE ID_VOTO = ?; ";
 
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);
@@ -147,4 +140,4 @@ import entity.EntityValutazione;
 			}
 		}
 	}
-}
+
