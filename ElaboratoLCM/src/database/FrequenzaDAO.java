@@ -29,9 +29,9 @@ public class FrequenzaDAO {
 				PreparedStatement stmt = conn.prepareStatement(query);
 				
 				stmt.setString(1,eF.getAnnoScolastico());
-				stmt.setInt(2,eF.associaAlunno().getMatricola());
-				stmt.setChar(3, eF.associaClasse().getSezione());
-				stmt.setInt(4,eF.associaClasse().getClasseAnno());
+				stmt.setInt(2,eF.getAlunno().getMatricola());
+				stmt.setInt(3, eF.getClasse().getSezione());
+				stmt.setInt(4,eF.getClasse().getAnno());
 		
 			
 				stmt.executeUpdate();
@@ -47,7 +47,7 @@ public class FrequenzaDAO {
 		}
 	}
 	
-	public static EntityFrequenza readFrequenza(int matricola_alunno, char classe_sezione, int classe_anno)throws DAOException, DBConnectionException {
+	public static EntityFrequenza readFrequenza(String annoScolastico, int matricola_alunno, char classe_sezione, int classe_anno)throws DAOException, DBConnectionException {
 		
 		EntityFrequenza eF = null;
 		EntityAlunno ea = new EntityAlunno("","", null, "", "", "", "", "", "", matricola_alunno);
@@ -56,14 +56,15 @@ public class FrequenzaDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "SELECT * FROM Frquenze WHERE MATRICOLA_ALUNNO=?, SEZIONE_CLASSE=?, ANNO_CLASSE=? ;";
+			String query = "SELECT * FROM Frquenze WHERE ANNOSCOLASTICO=?, MATRICOLA_ALUNNO=?, SEZIONE_CLASSE=?, ANNO_CLASSE=? ;";
 			
 			try {
 				
 				PreparedStatement stmt = conn.prepareStatement(query);
-				stmt.setInt(1,matricola_alunno);
-				stmt.setInt(2,classe_sezione);
-				stmt.setInt(3,classe_anno);
+				stmt.setString(1, annoScolastico);
+				stmt.setInt(2,matricola_alunno);
+				stmt.setInt(3,classe_sezione);
+				stmt.setInt(4,classe_anno);
 
 				ResultSet result = stmt.executeQuery();
 
@@ -97,10 +98,12 @@ public class FrequenzaDAO {
 			
 				PreparedStatement stmt = conn.prepareStatement(query);
 				
+
 				stmt.setString(1,eF.getAnnoScolastico());
 				stmt.setInt(2,eF.getAlunno().getMatricola());
-				stmt.setChar(3, eF.getClasse().getSezione());
-				stmt.setInt(4,eF.getClasse().getClasseAnno());
+				stmt.setInt(3, eF.getClasse().getSezione());
+				stmt.setInt(4,eF.getClasse().getAnno());
+		
 			
 				
 				stmt.executeUpdate();
@@ -123,13 +126,15 @@ public class FrequenzaDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "DELETE FROM Frequenze WHERE  MATRICOLA_ALUNNO=? AND SEZIONE_CLASSE=? AND ANNO_CLASSE=?";
+			String query = "DELETE FROM Frequenze WHERE  ANNOSCOLASTICO=? AND MATRICOLA_ALUNNO=? AND SEZIONE_CLASSE=? AND ANNO_CLASSE=?";
 
 			try {
 				PreparedStatement stmt = conn.prepareStatement(query);
+				
+				stmt.setString(1, eF.getAnnoScolastico());
 				stmt.setInt(1,eF.getAlunno().getMatricola());
-				stmt.setChar(2, eF.getClasse().getSezione());
-				stmt.setInt(3,eF.getClasse().getClasseAnno());
+				stmt.setInt(2, eF.getClasse().getSezione());
+				stmt.setInt(3,eF.getClasse().getAnno());
 				stmt.executeUpdate();
 
 			}catch(SQLException e) {
@@ -146,13 +151,14 @@ public class FrequenzaDAO {
 	
 	
 	
-	public static char getSezioneClasse(int matricola, String annoScolasticoCorrente) throws DAOException, DBConnectionException {
+	public static EntityFrequenza getFrequenza(int matricola, String annoScolasticoCorrente) throws DAOException, DBConnectionException {
 		
-		char sezione_classe;
-
+		EntityFrequenza eF = null;
+	
+		
 		try {
 			Connection conn = DBManager.getConnection();
-			String query = "SELECT sezione_classe FROM Frequenze WHERE MATRICOLA_ALUNNO=? AND ANNOSCOLASTICO=? ;";
+			String query = "SELECT * FROM Frequenze WHERE MATRICOLA_ALUNNO=? AND ANNOSCOLASTICO=? ;";
 
 			try {
 				PreparedStatement stmt = conn.prepareStatement(query);
@@ -163,8 +169,9 @@ public class FrequenzaDAO {
 				ResultSet result = stmt.executeQuery();
 
 				if(result.next()) {
-					sezione_classe = (char) result.getInt(1);
-				}
+					EntityAlunno ea = new EntityAlunno("","", null, "", "", "", "", "", "", result.getInt(2));
+					EntityClasse eC= new EntityClasse((char)result.getInt(3), result.getInt(4));
+					eF = new EntityFrequenza(result.getString(1), ea,eC);	}
 			}catch(SQLException e) {
 				throw new DAOException("Errore sezione_classe non trovata");
 			} finally {
@@ -175,10 +182,10 @@ public class FrequenzaDAO {
 			throw new DBConnectionException("Errore connessione database");
 		}
 
-		return sezione_classe;
+		return eF;
 	}
 		
-	public static int getAnnoClasse(int matricola, String annoScolasticoCorrente)  throws DAOException, DBConnectionException{
+	/*public static int getAnnoClasse(int matricola, String annoScolasticoCorrente)  throws DAOException, DBConnectionException{
 		
 		int anno_classe=0;
 
@@ -208,7 +215,7 @@ public class FrequenzaDAO {
 		}
 
 		return anno_classe;
-	}
+	} */
 	} 
 	
 	

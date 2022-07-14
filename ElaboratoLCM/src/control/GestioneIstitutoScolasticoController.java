@@ -134,16 +134,22 @@ public class GestioneIstitutoScolasticoController {
 		boolean valido=false;
 		int i=0;
 		String mat;
-		
+		int id_registro;
 		ArrayList<EntityInsegnamento> ListaInsegnamento=new ArrayList<EntityInsegnamento>();
-		
+		EntityFrequenza eF;
 		/*getAnnoScolasticoCorrente*/
 		
 		annoScolasticoCorrente=String.valueOf(data_Voto.getYear());
 		
 		try{
-			char sezione_classe= FrequenzaDAO.getSezioneClasse(matricola, annoScolasticoCorrente);
-			int anno_classe= FrequenzaDAO.getAnnoClasse(matricola, annoScolasticoCorrente);
+			/*char sezione_classe= FrequenzaDAO.getSezioneClasse(matricola, annoScolasticoCorrente);
+			int anno_classe= FrequenzaDAO.getAnnoClasse(matricola, annoScolasticoCorrente); */
+			
+			eF= FrequenzaDAO.getFrequenza(matricola_docente, annoScolasticoCorrente);
+			
+			char sezione_classe= eF.getClasse().getSezione();
+			int anno_classe= eF.getClasse().getAnno();
+			
 			InsegnamentoDAO.getInsegnamento(matricola_docente, annoScolasticoCorrente,
 					sezione_classe, anno_classe, ListaInsegnamento);
 			while(!valido && i<ListaInsegnamento.size()) {
@@ -165,7 +171,12 @@ public class GestioneIstitutoScolasticoController {
 			
 			boolean check=annoScolasticoCorrente.equals(locale);
 			
-			if(check!=true) throw new OperationException("Errore anno scolastico non valido");			
+			if(check!=true) throw new OperationException("Errore anno scolastico non valido");	
+			id_registro = ClasseDAO.readIdRegistro(sezione_classe, anno_classe);
+			EntityAlunno ea = new EntityAlunno("","", null, "", "", "", "", "", "", matricola);
+			EntityValutazione eV = new EntityValutazione(0, java.sql.Date.valueOf(data_Voto), materia, voto, ea);
+			ValutazioneDAO.createValutazione(eV,id_registro);
+			
 		}
 		catch(DBConnectionException dbEx) {
 			throw new OperationException("\nRiscontrato problema connessione!\n");

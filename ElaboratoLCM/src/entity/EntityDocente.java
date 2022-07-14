@@ -23,13 +23,13 @@ public class EntityDocente extends EntityUtente {
 		
 	}
 	
-	public void associaFiglio(EntityInsegnamento eF ) {
+	public void associaInsegnamento(EntityInsegnamento eF ) {
 		
 		insegnamento.add(eF);
 		
 	}
 	
-	public void rimuoviFiglio(EntityInsegnamento eF) {
+	public void rimuoviInsegnamento(EntityInsegnamento eF) {
 		
 		insegnamento.remove(eF);
 		

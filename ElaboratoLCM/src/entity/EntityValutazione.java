@@ -1,6 +1,7 @@
 package entity;
 
-import java.util.Date;
+
+import java.sql.Date;
 import database.ValutazioneDAO;
 import exception.DBConnectionException;
 
@@ -9,17 +10,15 @@ import exception.DBConnectionException;
 		private int id_voto;
 		private Date data;
 		private String materia;
-		private int id_RegistroElettronico;
 		private int voto;	
 		private EntityAlunno studente;
 		
 
-		public EntityValutazione(int id, Date data, String materia, int idRegistroElettronico, int voto, EntityAlunno ea) {
+		public EntityValutazione(int id, Date data, String materia, int voto, EntityAlunno ea) {
 			super();
 			this.id_voto= id;
 			this.data= data;
 			this.materia=materia;
-			this.id_RegistroElettronico=idRegistroElettronico;
 			this.voto=voto;
 			this.studente=ea;
 		}
@@ -33,7 +32,7 @@ import exception.DBConnectionException;
 		}
 		public void setId(int id){
 			this.id_voto=id;
-		}
+		} 
 		public Date getData() {
 			return data;
 		}
@@ -46,13 +45,7 @@ import exception.DBConnectionException;
 		public void setMateria(String materia){
 			this.materia=materia;
 		}
-	
-		public int getIdRegistroElettronico() {
-			return id_RegistroElettronico;
-		}
-		public void setIdRegistroElettronico(int idRegistro){
-			this.id_RegistroElettronico=idRegistro;
-		}
+		
 		public int getVoto() {
 			return voto;
 		}

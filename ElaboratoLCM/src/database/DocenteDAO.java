@@ -34,7 +34,7 @@ public class DocenteDAO {
 				stmt.setString(7,eD.getNumeroCellulare());
 				stmt.setString(8,eD.getEmail());
 				stmt.setString(9,eD.getCodiceFiscale());
-	//			stmt.setInt(10, eD.get_matricolaDocente());
+	//			stmt.setInt(10, eD.get_matricolaDocente()); autoincrementale
 				stmt.executeUpdate();
 
 			}catch(SQLException e) {
@@ -103,7 +103,7 @@ public class DocenteDAO {
 				stmt.setString(6,eD.getNumeroCellulare());
 				stmt.setString(7,eD.getUsername());
 				stmt.setString(8,eD.getPassword());
-				stmt.setString(9,eD.get_matricolaDocente());
+				stmt.setInt(9,eD.get_matricolaDocente());
 				
 				stmt.executeUpdate();
 
