@@ -56,7 +56,7 @@ public class ValutazioneDAO {
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "SELECT * FROM GestioneIstitutoScolasticoController.Valutazioni WHERE ID_VOTO = ? ;";
+				String query = "SELECT * FROM GestioneIstitutoScolasticoController.Valutazioni WHERE id_voto = ? ;";
 				try {
 					
 
@@ -89,7 +89,7 @@ public class ValutazioneDAO {
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "UPDATE GestioneIstitutoScolasticoController.Valutazioni SET DATA=?, MATERIA=?, MATRICOLAALUNNO=?, VOTO=? WHERE ID_VOTO=? ;";
+				String query = "UPDATE GestioneIstitutoScolasticoController.Valutazioni SET data=?, materia=?, matricolaAlunno=?, voto=? WHERE id_voto=? ;";
 				
 				try {
 					
@@ -122,7 +122,7 @@ public class ValutazioneDAO {
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "DELETE FROM GestioneIstitutoScolasticoController.Valutazioni WHERE ID_VOTO = ?; ";
+				String query = "DELETE FROM GestioneIstitutoScolasticoController.Valutazioni WHERE id_voto = ?; ";
 
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);

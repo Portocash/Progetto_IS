@@ -59,7 +59,7 @@ import exception.DBConnectionException;
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "SELECT * FROM GestioneIstitutoScolastico.Insegnamenti WHERE MATRICOLA_DOCENTE = ? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ;";
+				String query = "SELECT * FROM GestioneIstitutoScolastico.Insegnamenti WHERE matricola_docente = ? AND classe_sezione=? AND classe_anno=? AND annoScolastico=? ;";
 				try {
 					
 					PreparedStatement stmt = conn.prepareStatement(query);
@@ -128,7 +128,7 @@ import exception.DBConnectionException;
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "DELETE FROM GestioneIstitutoScolastico.Insegnamenti WHERE MATERIA=?, MATRICOLA_DOCENTE = ? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ; ";
+				String query = "DELETE FROM GestioneIstitutoScolastico.Insegnamenti WHERE materia=?, matricola_docente = ? AND classe_sezione=? AND classe_anno=? AND annoScolastico=? ; ";
 
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);
@@ -161,7 +161,7 @@ import exception.DBConnectionException;
 
 			try {
 				Connection conn = DBManager.getConnection();
-				String query = "SELECT * FROM GestioneIstitutoScolasticoController.Insegnamenti  WHERE MATRICOLA_DOCENTE=? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=?;";
+				String query = "SELECT * FROM GestioneIstitutoScolasticoController.Insegnamenti  WHERE matricola_docente=? AND classe_sezione=? AND classe_anno=? AND annoScolastico=?;";
 				
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);

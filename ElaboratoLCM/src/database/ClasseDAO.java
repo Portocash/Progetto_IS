@@ -30,7 +30,7 @@ import exception.DBConnectionException;
 					ResultSet res = stmt.executeQuery();  //throws SQLException 
 					
 					if(res.next()) {
-						 eC = new EntityClasse(res.getString(1).charAt(0), res.getInt(2));
+						 eC = new EntityClasse(res.getString(1), res.getInt(2));
 					}
 				}
 				catch(SQLException e ) {
@@ -47,7 +47,7 @@ import exception.DBConnectionException;
 			return eC;
 		}
 		
-		public static int readIdRegistro(char sezione_classe, int anno_classe) throws DAOException, DBConnectionException  {
+		public static int readIdRegistro(String sezione_classe, int anno_classe) throws DAOException, DBConnectionException  {
 			
 			int idRegistro=0;
 
@@ -59,7 +59,7 @@ import exception.DBConnectionException;
 					
 					PreparedStatement stmt = conn.prepareStatement(query);
 							
-					stmt.setInt(1,sezione_classe);
+					stmt.setString(1,sezione_classe);
 					stmt.setInt(2,anno_classe);
 				
 

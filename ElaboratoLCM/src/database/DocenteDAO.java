@@ -57,7 +57,7 @@ public class DocenteDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "SELECT * FROM GestioneIstitutoScolastico.Docenti WHERE CODICEFISCALE = ? ;";
+			String query = "SELECT * FROM GestioneIstitutoScolastico.Docenti WHERE codiceFiscale = ? ;";
 
 
 			try {
@@ -90,7 +90,8 @@ public class DocenteDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "UPDATE GestioneIstitutoScolastico.Docenti SET NOME=?, COGNOME=?, DATADINASCITA=?, COMUNEDIRESIDENZA=?, USERNAME=?, PASSWORD=?, NUMERODICELLULARE = ?, EMAIL = ?, CODICEFISCALE =? WHERE MATRICOLA_DOCENTE=? ;";
+			String query = "UPDATE GestioneIstitutoScolastico.Docenti SET nome=?, cognome=?, dataDiNascita=?, comuneDiResidenza=?, username=?, password=?, numeroDiCellulare = ?, email = ?, "
+					+ "codiceFiscale =? WHERE matricola_docente=? ;";
 		
 			try {
 				
@@ -127,7 +128,7 @@ public class DocenteDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "DELETE FROM GestioneIstitutoScolastico.Docenti WHERE MATRICOLA_DOCENTE = ?; ";
+			String query = "DELETE FROM GestioneIstitutoScolastico.Docenti WHERE matricola_docente = ?; ";
 
 			try {
 				PreparedStatement stmt = conn.prepareStatement(query);
