@@ -175,13 +175,16 @@ public class GestioneIstitutoScolasticoController {
 			id_registro = ClasseDAO.readIdRegistro(sezione_classe, anno_classe);
 			EntityAlunno ea = new EntityAlunno("","", null, "", "", "", "", "", "", matricola);
 			EntityValutazione eV = new EntityValutazione(0, java.sql.Date.valueOf(data_Voto), materia, voto, ea);
-			ValutazioneDAO.createValutazione(eV,id_registro);
 			
+			ValutazioneDAO.createValutazione(eV,id_registro);
 		}
+		
 		catch(DBConnectionException dbEx) {
 			throw new OperationException("\nRiscontrato problema connessione!\n");
 		}catch(DAOException ex) {
 		throw new OperationException("\nRiscontrato problema database!\n");
-		}		
+		}
+		catch(NullPointerException eP){
+			throw new OperationException("\nRiscontrato problema valueof!\n");		}
 	}
 }

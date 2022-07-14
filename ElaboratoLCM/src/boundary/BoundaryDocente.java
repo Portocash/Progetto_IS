@@ -7,14 +7,16 @@ import java.time.LocalDate;
 
 import control.GestioneIstitutoScolasticoController;
 import exception.DAOException;
+
 import exception.OperationException;
+import exception.InputException;
 
 public class BoundaryDocente {
 
 	//forse qui fare un altro tipo di eccezione di tipo input non valido.
 	
 	public void inserimentoVoto(int matricola, int voto, 
-			String dataVoto, String materia, int matricola_docente)throws OperationException { 
+			LocalDate dataVoto, String materia, int matricola_docente)throws  InputException{ 
 		
 		boolean matricolaCheck = false;
 		boolean materiaCheck = false;
@@ -24,39 +26,43 @@ public class BoundaryDocente {
 		if(matr.length()==20) matricolaCheck = true;
 		else matricolaCheck = false;
 		
-		if(!matricolaCheck) throw new OperationException("\n Matricola non è di dimensione 20");
+		if(!matricolaCheck) throw new InputException("\n Matricola non è di dimensione 20");
 		
-		if(voto<0) throw new OperationException("\n Voto non valido poichè negativo");
+		if(voto<0) throw new InputException("\n Voto non valido poichè negativo");
 		
 		if(materia.length()<=100) materiaCheck = true;
 		else materiaCheck = false;
 
-		DateFormat df= new SimpleDateFormat("yyyy-mm-dd");
+	/*	DateFormat df= new SimpleDateFormat("yyyy-mm-dd");
 		df.setLenient(false);
 		try {
 		 df.parse(dataVoto);
 		 dataCheck=true;
 		}
 		catch(ParseException e) {
-			dataCheck = false;
+			System.out.println("Errore parsing ..");
 		}
-		try{
+		//try{
 			 data_Voto = LocalDate.parse(dataVoto);
-		}
-		catch(ParseException e) {
-			return;
-		}
-		if(!materiaCheck) throw new OperationException("\n Materia è una stringa di lunghezza>100");
+	//	}
+		//catch(ParseException e) {
+			//System.out.println("Errore parsing ..");
+		//}
+		 * 
+		 */
+		
+		
+		if(!materiaCheck) throw new InputException("\n Materia è una stringa di lunghezza>100");
 		
 		GestioneIstitutoScolasticoController GIS = GestioneIstitutoScolasticoController.getInstance();
 		
 		try {
-			GIS.inserimentoVoto(matricola, voto, data_Voto, materia, matricola_docente);
+			GIS.inserimentoVoto(matricola, voto, dataVoto, materia, matricola_docente);
 		}
 		catch(OperationException ex) {	
-			return ex.getMessage();
+			 System.out.println(ex.getMessage());
 		}
 	}	
 	}
-}
+
 
