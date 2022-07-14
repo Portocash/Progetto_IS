@@ -4,11 +4,21 @@ import java.sql.Date;
 
 public class EntityDocente extends Utente {
 	
-	public EntityDocente(String nome, String cognome, String codFisc, String comuneDiResidenza, String email,
-			String numeroCel, String username, String password, Date dataDiNascita) {
-		super(nome, cognome, codFisc, comuneDiResidenza, email, numeroCel, username, password, dataDiNascita);
+	private int matricolaDocente;
+	
+	public EntityDocente(String nome, String cognome, Date dataDiNascita, String comuneDiResidenza, String username, String password, String numeroDiCellulare, String email, String codiceFiscale, int matricolaDocente) {
+		super(nome, cognome, dataDiNascita, comuneDiResidenza, username, password, numeroDiCellulare, email, codiceFiscale);
+		this.matricolaDocente = matricolaDocente;
 	}
 	
 	public EntityDocente() {super();}
+
+	public int getMatricolaDocente() {
+		return matricolaDocente;
+	}
+
+	public void setMatricolaDocente(int matricolaDocente) {
+		this.matricolaDocente = matricolaDocente;
+	}
 
 }
