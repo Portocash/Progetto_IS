@@ -2,6 +2,9 @@ package database;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import control.GestioneIstitutoScolasticoController;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +24,7 @@ import exception.DBConnectionException;
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "INSERTO INTO Insegnamenti VALUES (?,?,?,?,?);";
+				String query = "INSERTO INTO GestioneIstitutoScolastico.Insegnamenti VALUES (?,?,?,?,?);";
 				
 				try {
 				
@@ -56,7 +59,7 @@ import exception.DBConnectionException;
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "SELECT * FROM Insegnamenti WHERE MATRICOLA_DOCENTE = ? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ;";
+				String query = "SELECT * FROM GestioneIstitutoScolastico.Insegnamenti WHERE MATRICOLA_DOCENTE = ? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ;";
 				try {
 					
 					PreparedStatement stmt = conn.prepareStatement(query);
@@ -125,7 +128,7 @@ import exception.DBConnectionException;
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "DELETE FROM Insegnamenti WHERE MATERIA=?, MATRICOLA_DOCENTE = ? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ; ";
+				String query = "DELETE FROM GestioneIstitutoScolastico.Insegnamenti WHERE MATERIA=?, MATRICOLA_DOCENTE = ? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=? ; ";
 
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);
@@ -158,7 +161,7 @@ import exception.DBConnectionException;
 
 			try {
 				Connection conn = DBManager.getConnection();
-				String query = "SELECT * FROM Insegnamenti  WHERE MATRICOLA_DOCENTE=? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=?;";
+				String query = "SELECT * FROM GestioneIstitutoScolasticoController.Insegnamenti  WHERE MATRICOLA_DOCENTE=? AND CLASSE_SEZIONE=? AND CLASSE_ANNO=? AND ANNOSCOLASTICO=?;";
 				
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);

@@ -17,7 +17,7 @@ package database;
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "INSERTO INTO Genitori VALUES (?,?,?,?,?,?,?,?,?);";
+				String query = "INSERTO INTO GestioneIstitutoScolastico.Genitori VALUES (?,?,?,?,?,?,?,?,?);";
 				
 				try {
 
@@ -57,7 +57,7 @@ package database;
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "SELECT * FROM Genitori WHERE CODICEFISCALE = ? ;";
+				String query = "SELECT * FROM GestioneIstitutoScolastico.Genitori WHERE CODICEFISCALE = ? ;";
 
 				try {
 			
@@ -90,7 +90,7 @@ package database;
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "UPDATE Genitori SET NOME=?, COGNOME=?, DATADINASCITA=?, COMUNEDIRESIDENZA=?, USERNAME=?, PASSWORD=?, NUMERODICELLULARE = ?, EMAIL = ? WHERE CODICEFISCALE=? ;";				
+				String query = "UPDATE GestioneIstitutoScolastico.Genitori SET NOME=?, COGNOME=?, DATADINASCITA=?, COMUNEDIRESIDENZA=?, USERNAME=?, PASSWORD=?, NUMERODICELLULARE = ?, EMAIL = ? WHERE CODICEFISCALE=? ;";				
 				try {
 					
 					PreparedStatement stmt = conn.prepareStatement(query);
@@ -125,7 +125,7 @@ package database;
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "DELETE FROM Genitori WHERE CODICEFISCALE = ?; ";
+				String query = "DELETE FROM GestioneIstitutoScolastico.Genitori WHERE CODICEFISCALE = ?; ";
 
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);

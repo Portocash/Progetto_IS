@@ -161,6 +161,7 @@ public class GestioneIstitutoScolasticoController {
 				else i++;
 			}
 			
+			/* for(Entity Insegnamento insegname*/
 			if(valido!=true) {
 				
 				throw new OperationException("Docente non associato alla classe dell'alunno per quella materia");

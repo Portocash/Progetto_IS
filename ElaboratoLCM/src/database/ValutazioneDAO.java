@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import control.GestioneIstitutoScolasticoController;
 import entity.EntityAlunno;
 import entity.EntityValutazione;
 import exception.DAOException;
@@ -20,7 +21,7 @@ public class ValutazioneDAO {
 		try {
 				
 				Connection conn = DBManager.getConnection();
-				String query = "INSERT INTO Valutazioni(data,materia, matricolaAlunno, id_registroElettronico,voto) VALUES (?,?,?,?,?);";
+				String query = "INSERT INTO GestioneIstitutoScolasticoController.Valutazioni(data,materia, matricolaAlunno, id_registroElettronico,voto) VALUES (?,?,?,?,?);";
 
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);
@@ -55,7 +56,7 @@ public class ValutazioneDAO {
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "SELECT * FROM Valutazioni WHERE ID_VOTO = ? ;";
+				String query = "SELECT * FROM GestioneIstitutoScolasticoController.Valutazioni WHERE ID_VOTO = ? ;";
 				try {
 					
 
@@ -88,7 +89,7 @@ public class ValutazioneDAO {
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "UPDATE Valutazioni SET DATA=?, MATERIA=?, MATRICOLAALUNNO=?, VOTO=? WHERE ID_VOTO=? ;";
+				String query = "UPDATE GestioneIstitutoScolasticoController.Valutazioni SET DATA=?, MATERIA=?, MATRICOLAALUNNO=?, VOTO=? WHERE ID_VOTO=? ;";
 				
 				try {
 					
@@ -121,7 +122,7 @@ public class ValutazioneDAO {
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "DELETE FROM Valutazioni WHERE ID_VOTO = ?; ";
+				String query = "DELETE FROM GestioneIstitutoScolasticoController.Valutazioni WHERE ID_VOTO = ?; ";
 
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);

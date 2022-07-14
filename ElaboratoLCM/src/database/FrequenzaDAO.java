@@ -22,7 +22,7 @@ public class FrequenzaDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "INSERTO INTO Insegnamenti VALUES (?,?,?,?);";
+			String query = "INSERTO INTO GestioneIstitutoScolastico.Insegnamenti VALUES (?,?,?,?);";
 			
 			try {
 
@@ -56,7 +56,7 @@ public class FrequenzaDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "SELECT * FROM Frquenze WHERE ANNOSCOLASTICO=?, MATRICOLA_ALUNNO=?, SEZIONE_CLASSE=?, ANNO_CLASSE=? ;";
+			String query = "SELECT * FROM GestioneIstitutoScolastico.Frquenze WHERE ANNOSCOLASTICO=?, MATRICOLA_ALUNNO=?, SEZIONE_CLASSE=?, ANNO_CLASSE=? ;";
 			
 			try {
 				
@@ -91,7 +91,7 @@ public class FrequenzaDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "UPDATE Frequenze SET ANNOSCOLASTICO=? WHERE  MATRICOLA_ALUNNO=? AND SEZIONE_CLASSE=? AND ANNO_CLASSE=?;";
+			String query = "UPDATE GestioneIstitutoScolastico.Frequenze SET ANNOSCOLASTICO=? WHERE  MATRICOLA_ALUNNO=? AND SEZIONE_CLASSE=? AND ANNO_CLASSE=?;";
 
 
 			try {
@@ -126,7 +126,7 @@ public class FrequenzaDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "DELETE FROM Frequenze WHERE  ANNOSCOLASTICO=? AND MATRICOLA_ALUNNO=? AND SEZIONE_CLASSE=? AND ANNO_CLASSE=?";
+			String query = "DELETE FROM GestioneIstitutoScolastico.Frequenze WHERE  ANNOSCOLASTICO=? AND MATRICOLA_ALUNNO=? AND SEZIONE_CLASSE=? AND ANNO_CLASSE=?";
 
 			try {
 				PreparedStatement stmt = conn.prepareStatement(query);
@@ -158,7 +158,7 @@ public class FrequenzaDAO {
 		
 		try {
 			Connection conn = DBManager.getConnection();
-			String query = "SELECT * FROM Frequenze WHERE MATRICOLA_ALUNNO=? AND ANNOSCOLASTICO=? ;";
+			String query = "SELECT * FROM GestioneIstitutoScolastico.Frequenze WHERE MATRICOLA_ALUNNO=? AND ANNOSCOLASTICO=? ;";
 
 			try {
 				PreparedStatement stmt = conn.prepareStatement(query);
