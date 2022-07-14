@@ -3,6 +3,7 @@ package database;
 	
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,22 +15,22 @@ import exception.DBConnectionException;
 
 public class ValutazioneDAO {
 
-	public static void createValutazione(EntityValutazione eV) throws DAOException, DBConnectionException {
+	public static void createValutazione(EntityValutazione eV, int idRegistro) throws DAOException, DBConnectionException {
 			
 		try {
 				
 				Connection conn = DBManager.getConnection();
-				String query = "INSERT INTO Valutazioni VALUES (?,?,?,?,?,?);";
+				String query = "INSERT INTO Valutazioni(data,materia, matricolaAlunno, id_registroElettronico,voto) VALUES (?,?,?,?,?);";
 
 				try {
 					PreparedStatement stmt = conn.prepareStatement(query);
 					
-					stmt.setInt(1,eV.getId());
-					stmt.setDate(2, eV.getData());
-					stmt.setString(3, eV.getMateria());
-					stmt.setInt(4, eV.getAlunno().getMatricola());
-					stmt.setInt(5, eV.getIdRegistroElettronico());
-					stmt.setInt(6,eV.getVoto());
+				//	stmt.setInt(1,eV.getId());
+					stmt.setDate(1,eV.getData());
+					stmt.setString(2, eV.getMateria());
+					stmt.setInt(3, eV.getAlunno().getMatricola());
+					stmt.setInt(4, idRegistro);
+					stmt.setInt(5,eV.getVoto());
 
 					stmt.executeUpdate();
 
@@ -63,10 +64,9 @@ public class ValutazioneDAO {
 					
 					stmt.setInt(1,id_voto);
 
-					ResultSet result = stmt.executeQuery();
-
+					ResultSet result = stmt.executeQuery();	
 					if(result.next()) {
-						eV = new EntityValutazione(result.getInt(1),result.getDate(2),result.getString(3),result.getInt(5), result.getInt(6),ea);	
+						eV = new EntityValutazione(result.getInt(1),result.getDate(2),result.getString(3),result.getInt(5),ea);	
 					}
 
 				}catch(SQLException e) {
@@ -88,7 +88,7 @@ public class ValutazioneDAO {
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "UPDATE Valutazioni SET DATA=?, MATERIA=?, MATRICOLAALUNNO=?, ID_REGISTROELETTRONICO=?, VOTO=? WHERE ID_VOTO=? ;";
+				String query = "UPDATE Valutazioni SET DATA=?, MATERIA=?, MATRICOLAALUNNO=?, VOTO=? WHERE ID_VOTO=? ;";
 				
 				try {
 					
@@ -97,10 +97,9 @@ public class ValutazioneDAO {
 					
 					stmt.setDate(1, eV.getData());
 					stmt.setString(2, eV.getMateria());
-					stmt.setInt(3, eV.getAlunno().getMatricolaAlunno());
-					stmt.setInt(4, eV.getIdRegistroElettronico());
-					stmt.setInt(5,eV.getVoto());
-					stmt.setInt(6,eV.getId());
+					stmt.setInt(3, eV.getAlunno().getMatricola());
+					stmt.setInt(4,eV.getVoto());
+					stmt.setInt(5,eV.getId());
 					stmt.executeUpdate();
 
 				}catch(SQLException e) {

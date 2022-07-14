@@ -11,6 +11,8 @@ import exception.OperationException;
 
 public class BoundaryDocente {
 
+	//forse qui fare un altro tipo di eccezione di tipo input non valido.
+	
 	public void inserimentoVoto(int matricola, int voto, 
 			String dataVoto, String materia, int matricola_docente)throws OperationException { 
 		
@@ -29,7 +31,7 @@ public class BoundaryDocente {
 		if(materia.length()<=100) materiaCheck = true;
 		else materiaCheck = false;
 
-		DateFormat df= new SimpleDateFormat("yyyy/mm/dd");
+		DateFormat df= new SimpleDateFormat("yyyy-mm-dd");
 		df.setLenient(false);
 		try {
 		 df.parse(dataVoto);
@@ -52,7 +54,7 @@ public class BoundaryDocente {
 			GIS.inserimentoVoto(matricola, voto, data_Voto, materia, matricola_docente);
 		}
 		catch(OperationException ex) {	
-			throw new OperationException("parametri non valido");
+			return ex.getMessage();
 		}
 	}	
 	}
