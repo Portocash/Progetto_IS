@@ -152,7 +152,7 @@ import exception.DBConnectionException;
 
 
 
-		public static void getInsegnamento (int matricola_docente, String annoScolasticoCorrente, char sezione_classe, int anno_classe, ArrayList<EntityInsegnamento> ListaeI )throws DAOException, DBConnectionException {
+		public static void getInsegnamento (int matricola_docente, String annoScolasticoCorrente, String sezione_classe, int anno_classe, ArrayList<EntityInsegnamento> ListaeI )throws DAOException, DBConnectionException {
 			
 	
 			EntityInsegnamento temp=null;
@@ -167,7 +167,7 @@ import exception.DBConnectionException;
 					PreparedStatement stmt = conn.prepareStatement(query);
 
 					stmt.setInt(1,matricola_docente);
-					stmt.setInt(2,sezione_classe);
+					stmt.setString(2,sezione_classe);
 					stmt.setInt(3,anno_classe);
 					stmt.setString(4,annoScolasticoCorrente);
 
