@@ -72,7 +72,7 @@ public class GestioneIstitutoScolasticoController {
 					docente.setCodiceFiscale(codiceFiscale);
 					docente.setComuneDiResidenza(comuneDiResidenza);
 					docente.setEmail(Email);
-					docente.setnumeroDiCellulare(Cellulare);
+					docente.setNumeroDiCellulare(Cellulare);
 					docente.setUsername(username.concat("_docente"));
 					docente.setPassword(codiceFiscale);
 					genitore=null;
@@ -92,7 +92,7 @@ public class GestioneIstitutoScolasticoController {
 				alunno.setCodiceFiscale(codiceFiscale);
 				alunno.setComuneDiResidenza(comuneDiResidenza);
 				alunno.setEmail(Email);
-				alunno.setnumeroDiCellulare(Cellulare);
+				alunno.setNumeroDiCellulare(Cellulare);
 				alunno.setUsername(username.concat("_alunno"));
 				alunno.setPassword(codiceFiscale);
 				genitore=null;
@@ -112,7 +112,7 @@ public class GestioneIstitutoScolasticoController {
 				genitore.setCodiceFiscale(codiceFiscale);
 				genitore.setComuneDiResidenza(comuneDiResidenza);
 				genitore.setEmail(Email);
-				genitore.setnumeroDiCellulare(Cellulare);
+				genitore.setNumeroDiCellulare(Cellulare);
 				genitore.setUsername(username.concat("_genitore"));
 				genitore.setPassword(codiceFiscale);
 				alunno=null;

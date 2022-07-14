@@ -19,7 +19,8 @@ public class DocenteDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "INSERT INTO Docenti VALUES (?,?,?,?,?,?,?,?,?);";
+			String query = "INSERT INTO Docenti(nome, cognome, dataDiNascita, comuneDiResidenza, username,"
+					+ ",password, numeroDiCellulare, email, codiceFiscale) VALUES (?,?,?,?,?,?,?,?,?);";
 			
 			try {
 		
@@ -28,10 +29,10 @@ public class DocenteDAO {
 				stmt.setString(1,eD.getNome());
 				stmt.setString(2,eD.getCognome());
 				stmt.setDate(3, eD.getDataDiNascita());
-				stmt.setString(4,eD.getcomuneDiResidenza());
+				stmt.setString(4,eD.getComuneDiResidenza());
 				stmt.setString(5, eD.getUsername());
 				stmt.setString(6,eD.getPassword());
-				stmt.setString(7,eD.getNumeroCellulare());
+				stmt.setString(7,eD.getNumeroDiCellulare());
 				stmt.setString(8,eD.getEmail());
 				stmt.setString(9,eD.getCodiceFiscale());
 	//			stmt.setInt(10, eD.get_matricolaDocente()); autoincrementale
@@ -89,7 +90,7 @@ public class DocenteDAO {
 		try {
 
 			Connection conn = DBManager.getConnection();
-			String query = "UPDATE Docenti SET NOME=?, COGNOME=?, DATADINASCITA=?, COMUNEDIRESIDENZA=?, EMAIL=?, NUMERODICELLULARE=?, USERNAME = ?, PASSWORD = ? WHERE MATRICOLA_DOCENTEE=? ;";
+			String query = "UPDATE Docenti SET NOME=?, COGNOME=?, DATADINASCITA=?, COMUNEDIRESIDENZA=?, USERNAME=?, PASSWORD=?, NUMERODICELLULARE = ?, EMAIL = ?, CODICEFISCALE =? WHERE MATRICOLA_DOCENTE=? ;";
 		
 			try {
 				
@@ -98,12 +99,13 @@ public class DocenteDAO {
 				stmt.setString(1,eD.getNome());
 				stmt.setString(2,eD.getCognome());
 				stmt.setDate(3, eD.getDataDiNascita());
-				stmt.setString(4,eD.getcomuneDiResidenza());
-				stmt.setString(5, eD.getEmail());
-				stmt.setString(6,eD.getNumeroCellulare());
-				stmt.setString(7,eD.getUsername());
-				stmt.setString(8,eD.getPassword());
-				stmt.setInt(9,eD.get_matricolaDocente());
+				stmt.setString(4,eD.getComuneDiResidenza());
+				stmt.setString(5, eD.getUsername());
+				stmt.setString(6,eD.getPassword());
+				stmt.setString(7,eD.getNumeroDiCellulare());
+				stmt.setString(8,eD.getEmail());
+				stmt.setString(9, eD.getCodiceFiscale());
+				stmt.setInt(10,eD.get_matricolaDocente());
 				
 				stmt.executeUpdate();
 

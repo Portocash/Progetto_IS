@@ -3,14 +3,16 @@ package entity;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class EntityDocente extends EntityUtente {
+public class EntityDocente extends Utente {
 	
 	private int matricola_docente;
 	private ArrayList<EntityInsegnamento> insegnamento;
 	
-	public EntityDocente(String nome, String cognome, Date dataDiNascita, String codiceFiscale, String comuneDiResidenza,
-			String email, String numeroDiCellulare, String username, String password, int matricola_docente) {
-		super(nome, cognome, dataDiNascita, codiceFiscale, comuneDiResidenza, email, numeroDiCellulare, username, password);
+	public EntityDocente(String nome, String cognome, Date dataDiNascita, String comuneDiResidenza, 
+			String username, String password, String numeroDiCellulare, String email, String codiceFiscale, 
+			int matricola_docente)
+	{
+		super(nome, cognome, dataDiNascita,comuneDiResidenza,username, password, numeroDiCellulare, email, codiceFiscale);
 		
 		this.matricola_docente=matricola_docente;
 		this.insegnamento=null;

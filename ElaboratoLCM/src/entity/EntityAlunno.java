@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 
-public class EntityAlunno extends EntityUtente {
+public class EntityAlunno extends Utente {
 	
 	private int matricola;
 	

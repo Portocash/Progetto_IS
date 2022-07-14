@@ -26,10 +26,10 @@ package database;
 					stmt.setString(1,eg.getNome());
 					stmt.setString(2,eg.getCognome());
 					stmt.setDate(3, eg.getDataDiNascita());
-					stmt.setString(4,eg.getcomuneDiResidenza());
+					stmt.setString(4,eg.getComuneDiResidenza());
 					stmt.setString(5, eg.getUsername());
 					stmt.setString(6,eg.getPassword());
-					stmt.setString(7,eg.getNumeroCellulare());
+					stmt.setString(7,eg.getNumeroDiCellulare());
 					stmt.setString(8,eg.getEmail());
 					stmt.setString(9,eg.getCodiceFiscale());
 
@@ -67,7 +67,8 @@ package database;
 					ResultSet result = stmt.executeQuery();
 
 					if(result.next()) {
-						eG = new EntityGenitore(result.getString(1),result.getString(2),result.getDate(3),result.getString(4),result.getString(5), result.getString(6), result.getString(7), result.getString(8), result.getString(9));	
+						eG = new EntityGenitore(result.getString(1),result.getString(2),result.getDate(3),result.getString(4),result.getString(5),
+								result.getString(6), result.getString(7), result.getString(8), result.getString(9));	
 					}
 
 				}catch(SQLException e) {
@@ -89,8 +90,7 @@ package database;
 			try {
 
 				Connection conn = DBManager.getConnection();
-				String query = "UPDATE Genitori SET NOME=?, COGNOME=?, DATADINASCITA=?, COMUNEDIRESIDENZA=?, EMAIL=?, NUMERODICELLULARE=?, USERNAME = ?, PASSWORD = ? WHERE CODICEFISCALE=? ;";
-				
+				String query = "UPDATE Genitori SET NOME=?, COGNOME=?, DATADINASCITA=?, COMUNEDIRESIDENZA=?, USERNAME=?, PASSWORD=?, NUMERODICELLULARE = ?, EMAIL = ? WHERE CODICEFISCALE=? ;";				
 				try {
 					
 					PreparedStatement stmt = conn.prepareStatement(query);
@@ -98,12 +98,12 @@ package database;
 					stmt.setString(1,eg.getNome());
 					stmt.setString(2,eg.getCognome());
 					stmt.setDate(3, eg.getDataDiNascita());
-					stmt.setString(4,eg.getcomuneDiResidenza());
-					stmt.setString(5, eg.getEmail());
-					stmt.setString(6,eg.getNumeroCellulare());
-					stmt.setString(7,eg.getUsername());
-					stmt.setString(8,eg.getPassword());
-					stmt.setString(9,eg.getCodiceFiscale());
+					stmt.setString(4,eg.getComuneDiResidenza());
+					stmt.setString(5, eg.getUsername());
+					stmt.setString(6,eg.getPassword());
+					stmt.setString(7,eg.getNumeroDiCellulare());
+					stmt.setString(8,eg.getEmail());
+					stmt.setString(9, eg.getCodiceFiscale());
 					
 					stmt.executeUpdate();
 
