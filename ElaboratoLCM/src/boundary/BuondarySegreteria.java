@@ -33,22 +33,53 @@ public class BuondarySegreteria {
 		if(Nome.length()<=15) nomeCheck = true;
 		else nomeCheck = false;
 		
-		if(!nomeCheck) throw new InputException("\n Il nome è una stringa di caratteri di lunghezza > 15");
+		int j=0;
+		while(nomeCheck && j<Nome.length()) {
+			
+			if(Nome.charAt(j)<='Z' && Nome.charAt(j)>='A' || Nome.charAt(j)<='z'&& Nome.charAt(j)>='a') nomeCheck=true;
+			else nomeCheck=false;
+			j++;
+		}
+		
+		if(!nomeCheck) throw new InputException("\n Il nome è una stringa di caratteri di lunghezza > 15 o con caratteri speciali");
 		
 		if(Cognome.length()<=15) cognomeCheck = true;
 		else cognomeCheck = false;
 		
-		if(!cognomeCheck) throw new InputException("\n Il cognome è una stringa di caratteri di lunghezza > 15");
+		j=0;
+		while(cognomeCheck && j<Cognome.length()) {
+			
+			if(Cognome.charAt(j)<='Z' && Cognome.charAt(j)>='A' || Cognome.charAt(j)<='z'&& Cognome.charAt(j)>='a') cognomeCheck=true;
+			else cognomeCheck=false;
+			j++;
+		}
+		//nome, cognome, comunediresidenza cofisicale e
+		if(!cognomeCheck) throw new InputException("\n Il cognome è una stringa di caratteri di lunghezza > 15 o con caratteri speciali");
 		
 		if(codiceFiscale.length()==16) CodiceCheck = true;
 		else CodiceCheck = false;
+		j=0;
+		while(CodiceCheck && j<codiceFiscale.length()) {
+			
+			if(comuneDiResidenza.charAt(j)<='Z' && comuneDiResidenza.charAt(j)>='A' || comuneDiResidenza.charAt(j)<='9'&& comuneDiResidenza.charAt(j)>='0') CodiceCheck=true;
+			else CodiceCheck=false;
+			j++;
+		}
+		
 		
 		if(!CodiceCheck) throw new InputException("\n Il codice fiscale è una stringa di caratteri di lunghezza > 16");
 		
 		if(comuneDiResidenza.length()<=30) cDRCheck = true;
 		else cDRCheck = false;
+		j=0;
+		while(cDRCheck && j<comuneDiResidenza.length()) {
+			
+			if(comuneDiResidenza.charAt(j)<='Z' && comuneDiResidenza.charAt(j)>='A' || comuneDiResidenza.charAt(j)<='z'&& comuneDiResidenza.charAt(j)>='a') cDRCheck=true;
+			else cDRCheck=false;
+			j++;
+		}
 		
-		if(!cDRCheck) throw new InputException("\n Il codice fiscale è una stringa di caratteri di lunghezza > 16");
+		if(!cDRCheck) throw new InputException("\n Il comune di residenza è una stringa di caratteri di lunghezza > 30 o con caratteri speciali");
 		
 		int i=0;
 		while(EmailCheck && i<Email.length()) {
@@ -62,9 +93,18 @@ public class BuondarySegreteria {
 		if(Cellulare.length()==10) numeroCheck = true;
 		else numeroCheck = false;
 		
-		if(!numeroCheck) throw new InputException("\n Il numero di cellulare è una stringa di caratteri di lunghezza > 10");
+		j=0;
 		
-		if(Ruolo.compareTo("Utente")==0) throw new InputException("\n Ruolo non inserito e utente per default");
+		while(numeroCheck && j<comuneDiResidenza.length()) {
+			
+			if(Cellulare.charAt(j)<='9' && Cellulare.charAt(j)>='0') numeroCheck=true;
+			else numeroCheck=false;
+			j++;
+		}
+		
+		if(!numeroCheck) throw new InputException("\n Il numero di cellulare è una stringa di caratteri di lunghezza > 10 o contiene simboli che non sono numeri");
+		
+		
 		
 		
 		

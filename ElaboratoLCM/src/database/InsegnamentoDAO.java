@@ -33,7 +33,7 @@ import exception.DBConnectionException;
 					
 					stmt.setString(1,eI.getMateria());
 					stmt.setInt(2,eI.getDocente().get_matricolaDocente());
-					stmt.setInt(3, eI.getClasse().getSezione());
+					stmt.setString(3, eI.getClasse().getSezione());
 					stmt.setInt(4,eI.getClasse().getAnno());
 					stmt.setString(5, eI.getAnnoScolastico());
 				
@@ -50,7 +50,7 @@ import exception.DBConnectionException;
 			}
 		}
 
-		public static EntityInsegnamento readInsegnamento(int matricola_docente, char classe_sezione, int classe_anno, String annoScolastico)throws DAOException, DBConnectionException {
+		public static EntityInsegnamento readInsegnamento(int matricola_docente, String classe_sezione, int classe_anno, String annoScolastico)throws DAOException, DBConnectionException {
 		
 			EntityInsegnamento eI = null;
 			EntityDocente ed = new EntityDocente("","", null, "", "", "", "", "", "", matricola_docente);
@@ -65,7 +65,7 @@ import exception.DBConnectionException;
 					PreparedStatement stmt = conn.prepareStatement(query);
 							
 					stmt.setInt(1,matricola_docente);
-					stmt.setInt(2,classe_sezione);
+					stmt.setString(2,classe_sezione);
 					stmt.setInt(3,classe_anno);
 					stmt.setString(4,annoScolastico);
 

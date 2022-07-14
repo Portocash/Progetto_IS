@@ -30,8 +30,12 @@ public class BoundaryDocente {
 		
 		if(voto<0) throw new InputException("\n Voto non valido poichè negativo");
 		
-		if(materia.length()<=100) materiaCheck = true;
+		if(materia.length()<=20) materiaCheck = true;
 		else materiaCheck = false;
+		
+
+	
+		
 
 	/*	DateFormat df= new SimpleDateFormat("yyyy-mm-dd");
 		df.setLenient(false);
@@ -51,6 +55,14 @@ public class BoundaryDocente {
 		 * 
 		 */
 		
+		
+		int j=0;
+		while(materiaCheck && j<materia.length()) {
+			
+			if(materia.charAt(j)<='Z' && materia.charAt(j)>='A' || materia.charAt(j)<='z'&& materia.charAt(j)>='a') materiaCheck=true;
+			else materiaCheck=false;
+			j++;
+		}
 		
 		if(!materiaCheck) throw new InputException("\n Materia è una stringa di lunghezza>100");
 		

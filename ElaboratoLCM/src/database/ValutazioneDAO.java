@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import control.GestioneIstitutoScolasticoController;
 import entity.EntityAlunno;
 import entity.EntityValutazione;
 import exception.DAOException;
@@ -67,7 +66,7 @@ public class ValutazioneDAO {
 
 					ResultSet result = stmt.executeQuery();	
 					if(result.next()) {
-						eV = new EntityValutazione(result.getInt(1),result.getDate(2),result.getString(3),result.getInt(5),ea);	
+						eV = new EntityValutazione(result.getInt(1),result.getDate(2),result.getString(3),result.getInt(6),ea);	
 					}
 
 				}catch(SQLException e) {
