@@ -18,8 +18,7 @@ public class BuondarySegreteria {
 	
 	public void registraUtente(String Nome, String Cognome, Date dataDiNascita, 
 			String codiceFiscale, String comuneDiResidenza, String Email, String Cellulare,
-			String Ruolo) throws OperationException,
-	  InputException{ 
+			String Ruolo) throws InputException{ 
 		
 		boolean nomeCheck = false;
 		boolean cognomeCheck = false;

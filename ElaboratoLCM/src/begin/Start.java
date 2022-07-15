@@ -1,4 +1,7 @@
-package boundary;
+package begin;
+
+import boundary.BoundaryDocente;
+import boundary.BuondarySegreteria;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -7,6 +10,7 @@ import java.util.Scanner;
 
 import exception.OperationException;
 import exception.InputException;
+
 public class Start {
 
 	public static void main(String[] args) {		
@@ -28,7 +32,7 @@ public class Start {
 			case "1": 
 				
 				boolean inputValido=false;
-				Date dataDiNascita;
+				Date dataDiNascita=null;
 				String nome, cognome, comuneDiResidenza, numeroDiCellulare;
 				String email, codiceFiscale,Ruolo;
 				
@@ -63,7 +67,7 @@ public class Start {
 				 codiceFiscale=scan.nextLine();
 				 
 				 System.out.println("inserisci il tuo ruolo nell'istituo scolastico!");
-				 numeroDiCellulare=scan.nextLine();
+				 Ruolo=scan.nextLine();
 				 try {
 					 
 					 bs.registraUtente(nome, cognome, dataDiNascita, 
@@ -79,7 +83,7 @@ public class Start {
 			case "2": 
 				// inserimentoVoto(int matricola, int voto, String data_Voto, String materia, int matricola_docente)
 				 int matricola, matricola_docente;
-				 LocalDate data_voto;
+				 LocalDate data_voto=null;
 				 String materia;
 				 int voto;
 				 boolean input1 = false;
@@ -138,14 +142,12 @@ public class Start {
 				 
 			 }
 				 break;
-			case "3":
+		/*	case "3":
 				
 				break;
+			} */
 			}
-			}
-		
+		exit=true;
 		
 		}	
-		
-	
 }
