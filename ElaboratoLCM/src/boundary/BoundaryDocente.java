@@ -22,12 +22,12 @@ public class BoundaryDocente {
 		boolean materiaCheck = false;
 		boolean dataCheck = false;
 		LocalDate data_Voto;
-		String matr=String.valueOf(matricola);
+		/*String matr=String.valueOf(matricola);
 		if(matr.length()==20) matricolaCheck = true;
 		else matricolaCheck = false;
 		
 		if(!matricolaCheck) throw new InputException("\n Matricola non è di dimensione 20");
-		
+	*/	
 		if(voto<0) throw new InputException("\n Voto non valido poichè negativo");
 		
 		if(materia.length()<=20) materiaCheck = true;

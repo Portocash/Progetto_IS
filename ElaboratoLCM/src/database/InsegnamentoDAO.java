@@ -134,7 +134,7 @@ import exception.DBConnectionException;
 					PreparedStatement stmt = conn.prepareStatement(query);
 					stmt.setString(1,eI.getMateria());
 					stmt.setInt(2,eI.getDocente().get_matricolaDocente());
-					stmt.setInt(3, eI.getClasse().getSezione());
+					stmt.setString(3, eI.getClasse().getSezione());
 					stmt.setInt(4,eI.getClasse().getAnno());
 					stmt.setString(5,eI.getAnnoScolastico());
 					stmt.executeUpdate();
