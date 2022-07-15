@@ -147,7 +147,7 @@ public class GestioneIstitutoScolasticoController {
 			
 			eF= FrequenzaDAO.getFrequenza(matricola_docente, annoScolasticoCorrente);
 			
-			char sezione_classe= eF.getClasse().getSezione();
+			String sezione_classe= eF.getClasse().getSezione();
 			int anno_classe= eF.getClasse().getAnno();
 			
 			InsegnamentoDAO.getInsegnamento(matricola_docente, annoScolasticoCorrente,
