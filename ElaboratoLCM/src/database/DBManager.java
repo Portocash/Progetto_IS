@@ -13,10 +13,8 @@ public class DBManager {
 	
 	public static Connection getConnection() throws SQLException {
 			
-			if(conn == null || conn.isClosed()) {
-				conn = DriverManager.getConnection("jdbc:mariadb://192.168.195.139:3306/GestioneIstitutoScolastico",
-				        "carlo", "carlo");
-			}
+			if(conn == null || conn.isClosed())
+				conn = DriverManager.getConnection("jdbc:mariadb://192.168.195.139:3306/GestioneIstitutoScolastico", "root", "carlo");
 			
 			return conn;
 		

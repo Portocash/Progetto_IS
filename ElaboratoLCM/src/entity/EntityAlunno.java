@@ -34,7 +34,7 @@ public class EntityAlunno extends Utente {
 		return frequenza.remove(eF);
 	}
 	
-	public ArrayList<EntityFrequenza> getFrequenze() {return frequenze;}
+	public ArrayList<EntityFrequenza> getFrequenze() {return frequenza;}
 	
 	
 	public ArrayList<EntityGenitore> getGenitori() {

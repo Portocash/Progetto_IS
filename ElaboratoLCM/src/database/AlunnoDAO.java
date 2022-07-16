@@ -13,6 +13,7 @@ import exception.DBConnectionException;
 public class AlunnoDAO {
 	
 	public static ArrayList<EntityAlunno> getFigli(String codiceFiscaleGenitore) throws DAOException, DBConnectionException {
+		
 		ArrayList<EntityAlunno> figli = new ArrayList<EntityAlunno>();
 		
 		try {
@@ -43,46 +44,12 @@ public class AlunnoDAO {
 		} catch(SQLException e) {
 			throw new DBConnectionException("Errore di connessione al database");
 		}
-		
 		return figli;
 	}
 
 	
-	public static EntityAlunno readAlunno(String codiceFiscale) throws DAOException, DBConnectionException {
-		EntityAlunno eA = null;
-		
-		try {
-			
-			Connection conn = DBManager.getConnection();
-			String query = "SELECT * FROM GestioneIstitutoScolastico.Alunni WHERE codiceFiscale = ?;";
-			
-			try {
-				
-				PreparedStatement stmt = conn.prepareStatement(query);  //throws SQLException
-				stmt.setString(1, codiceFiscale);  //throws SQLException
-				
-				ResultSet res = stmt.executeQuery();  //throws SQLException 
-				
-				if(res.next()) {
-					eA = new EntityAlunno(res.getString(1), res.getString(2), res.getDate(3), res.getString(9), res.getString(4), res.getString(8), res.getString(7), res.getString(5), res.getString(6), res.getInt(10));
-					
-				}
-			}
-			catch(SQLException e ) {
-				throw new DAOException("Errore alunno readAlunno");
-			}
-			finally {
-				DBManager.closeConnection();
-			}
-			
-		} catch(SQLException e) {
-			throw new DBConnectionException("Errore di connessione al database");
-		}
-		
-		return eA;
-	}
-	
 	public static EntityAlunno readAlunno(String username, String password) throws DAOException, DBConnectionException {
+		
 		EntityAlunno eA = null;
 		
 		try {
@@ -113,9 +80,9 @@ public class AlunnoDAO {
 		} catch(SQLException e) {
 			throw new DBConnectionException("Errore di connessione al database");
 		}
-		
 		return eA;
 	}
+	
 	
 	public static void createAlunno(EntityAlunno eA) throws DAOException, DBConnectionException {
 		

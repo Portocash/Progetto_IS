@@ -28,7 +28,7 @@ public class ClasseDAO {
 				ResultSet res = stmt.executeQuery();  //throws SQLException 
 				
 				if(res.next()) {
-					 eC = new EntityClasse(res.getString(1).charAt(0), res.getInt(2));
+					 eC = new EntityClasse(res.getString(1), res.getInt(2));
 				}
 			}
 			catch(SQLException e ) {

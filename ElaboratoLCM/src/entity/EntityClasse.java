@@ -2,18 +2,18 @@ package entity;
 
 public class EntityClasse {
 	
-	private char sezione;
+	private String sezione;
 	private int anno;
 	private EntityFrequenza frequenza;
 	
-	public EntityClasse(char sezione, int anno) {this.sezione = sezione; this.anno = anno;}
+	public EntityClasse(String sezione, int anno) {this.sezione = sezione; this.anno = anno;}
 	public EntityClasse(){}
 	
-	public char getSezione() {
+	public String getSezione() {
 		return sezione;
 	}
 	
-	public void setSezione(char sezione) {
+	public void setSezione(String sezione) {
 		this.sezione = sezione;
 	}
 	public int getAnno() {
